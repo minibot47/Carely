@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+/* ── Tailwind v4 theme tokens ── */
+@theme {
+  --font-jakarta : "jakarta" , sans-serif;
+  --font-garamond : "garamond" , sans-serif;
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #FAF8F5;
+  color: #2C1810;
+}
+
+
+
+.card-warm {
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  border: 1px solid #F0E8E0;
+}
