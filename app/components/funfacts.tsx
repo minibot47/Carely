@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Twitter, Phone, Mail, MapPin } from "lucide-react";
+import {  MapPin } from "lucide-react";
 const reasons = [
     "Lack of Time for Full-Time Care",
     "Limited Medical Knowledge at Home",
