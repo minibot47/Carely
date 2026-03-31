@@ -11,11 +11,6 @@ const services = [
   "Short-Term Care",
 ];
 
-const socials = [
-  { label: "X", icon: "" },
-  { label: "Facebook", icon: ""},
-  { label: "Instagram", icon: "" },
-];
 
 export default function Footer() {
   return (
@@ -74,18 +69,6 @@ export default function Footer() {
             <p className="text-sm text-[#B09080] leading-relaxed mb-6 max-w-[220px]">
               We provide expert care services for crystal-clear, safe and happy senior living.
             </p>
-            <div className="flex gap-3">
-              {socials.map((s) => (
-                <a
-                  key={s.label}
-                  href="#"
-                  aria-label={s.label}
-                  className="w-9 h-9 rounded-full border border-[#5C4033] flex items-center justify-center text-[#B09080] hover:border-[#C97B63] hover:text-[#C97B63] transition-colors"
-                >
-                  {s.icon && <s.icon size={15} />}
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* Quick Links */}
