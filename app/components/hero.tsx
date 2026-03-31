@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen p-16 overflow-hidden mt-2 mb-16 rounded-[16px] flex items-end">
+    <section className="relative min-h-screen p-5 overflow-hidden mt-2 mb-32 rounded-[16px] flex items-end">
       {/* Background image area */}
       <div className="absolute inset-0 bg-linear-to-br from-[#3D2B1F] via-[#5C3D2E] to-[#8B6355]">
         <Image src="/images/hero-img.jpg" alt="Senior care" fill className="object-cover opacity-60" />
@@ -13,8 +13,8 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 w-full flex items-center h-full justify-between">
         <div className="w-[80%] py-5 ">
-          <h1 className="font-jakarta font-medium text-5xl md:text-6xl lg:text-7xl text-white leading-tight mb-6">
-            Trusted senior care designed with heart <span className="font-garamond italic font-normal">respect, and experience</span>
+          <h1 className="font-jakarta font-semibold text-5xl md:text-6xl lg:text-6xl text-white leading-tight mb-6">
+            Trusted senior care designed with heart <span className="font-garamond italic font-medium text-7xl">respect, and experience</span>
           </h1>
           <p className="text-[#D4C0B0] text-lg leading-relaxed mb-8 ">
             At [Your Facility Name], we provide more than just care — we offer a second home built on trust, warmth, and respect. With round-the-clock nursing support, personalized care plans, and a deeply compassionate team,
