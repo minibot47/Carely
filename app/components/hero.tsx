@@ -13,7 +13,7 @@ export default function Hero() {
       {/* Content */}
       <div className="relative z-10 w-full flex items-center h-full justify-between">
         <div className="w-[80%] py-5 ">
-          <h1 className="font-jakarta font-semibold text-5xl md:text-6xl lg:text-7xl text-white leading-tight mb-6">
+          <h1 className="font-jakarta font-medium text-5xl md:text-6xl lg:text-7xl text-white leading-tight mb-6">
             Trusted senior care designed with heart <span className="font-garamond italic font-normal">respect, and experience</span>
           </h1>
           <p className="text-[#D4C0B0] text-lg leading-relaxed mb-8 ">
