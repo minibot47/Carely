@@ -36,29 +36,35 @@ const item = {
   show: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: [0.42, 0, 0.58, 1] }, // cubic-bezier array
+    transition: { duration: 0.6, ease: ["easeOut"] },
   },
+};
+
+// TYPEWRITER CONTAINER
+const titleContainer = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.02 } },
+};
+
+const letter = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1 },
 };
 
 export default function Blog() {
   return (
     <div className="w-full h-fit mb-24 px-4">
-
       {/* Header */}
       <div className="flex flex-col items-center justify-center mb-12">
         <div className="flex items-center gap-2 mb-4">
           <span className="w-2 h-2 rounded-full bg-[#C97B63]" />
-          <span className="text-sm text-[#C97B63] italic font-medium">
-            Our blog
-          </span>
+          <span className="text-sm text-[#C97B63] italic font-medium">Our blog</span>
         </div>
 
         <h1 className="font-jarkata font-bold text-center text-3xl sm:text-4xl lg:text-5xl text-[#2C1810] leading-tight">
           Explore articles that nurture
           <br />
-          <span className="font-normal italic">
-            educate, and inspire
-          </span>
+          <span className="font-normal italic"> educate, and inspire</span>
         </h1>
       </div>
 
@@ -71,12 +77,7 @@ export default function Blog() {
         viewport={{ once: true }}
       >
         {posts.map((post) => (
-          <motion.div
-            key={post.title}
-            variants={item}
-            className="flex flex-col gap-4"
-          >
-
+          <motion.div key={post.title} variants={item} className="flex flex-col gap-4">
             {/* Image */}
             <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden">
               <img
@@ -88,21 +89,20 @@ export default function Blog() {
 
             {/* Text */}
             <div className="flex flex-col gap-2 px-1">
-              
               {/* TYPEWRITER TITLE */}
-              <h2 className="font-semibold text-[#2C1810] text-base leading-snug">
+              <motion.h2
+                className="font-semibold text-[#2C1810] text-base leading-snug"
+                variants={titleContainer}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+              >
                 {post.title.split("").map((char, i) => (
-                  <motion.span
-                    key={i}
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ delay: i * 0.02 }}
-                    viewport={{ once: true }}
-                  >
+                  <motion.span key={i} variants={letter}>
                     {char}
                   </motion.span>
                 ))}
-              </h2>
+              </motion.h2>
 
               <Link
                 href={post.href}
@@ -116,19 +116,13 @@ export default function Blog() {
                   stroke="currentColor"
                   strokeWidth="2"
                 >
-                  <path
-                    d="M3 13L13 3M13 3H7M13 3v6"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
+                  <path d="M3 13L13 3M13 3H7M13 3v6" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </Link>
             </div>
-
           </motion.div>
         ))}
       </motion.div>
-
     </div>
   );
 }
