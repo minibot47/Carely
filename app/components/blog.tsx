@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, Variants, easeOut } from "framer-motion";
+
 
 const posts = [
   {
@@ -31,13 +32,9 @@ const container = {
 };
 
 // CARD ANIMATION
-const item = {
+const item: Variants = {
   hidden: { opacity: 0, y: 50 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: ["easeOut"] },
-  },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: easeOut } },
 };
 
 // TYPEWRITER CONTAINER
