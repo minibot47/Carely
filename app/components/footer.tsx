@@ -14,11 +14,11 @@ const services = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#3D2B1F] rounded-2xl overflow-hidden">
-      <div className="max-w-[1440px] mx-auto px-8 py-12 flex flex-col gap-10">
+    <footer className="bg-[#3D2B1F] h-[95vh] rounded-2xl overflow-hidden p-10">
+      <div className="max-w-[1440px] mx-auto py-12 flex flex-col gap-10 h-full ">
 
         {/* Top — heading + spinning badge */}
-        <div className="flex items-start justify-between gap-6 pb-8 border-b border-[#5C4033]">
+        <div className="flex items-start justify-between gap-6 pb-8 border-b border-[#5C4033] h-[40%] ">
           <h2 className="text-4xl md:text-5xl text-white leading-tight w-[80%]">
             <span className="font-semibold font-jarkata">Your questions answered, your </span>
             <span className="font-garamond">trust</span><br/>
@@ -54,7 +54,7 @@ export default function Footer() {
         </div>
 
         {/* Middle — logo + links */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 h-[40%]">
 
           {/* Brand */}
           <div>
@@ -62,11 +62,11 @@ export default function Footer() {
               <div className="w-10 h-10 rounded-full bg-[#C97B63]/30 flex items-center justify-center flex-shrink-0">
                 <img src="/logos/Logo.png" alt="logo"/>
               </div>
-              <span className="font-playfair text-xl text-white font-bold">
+              <span className="font-jarkata text-5xl text-white font-bold">
                 Care<span className="font-light italic">ly</span>.
               </span>
             </div>
-            <p className="text-sm text-[#B09080] leading-relaxed mb-6 max-w-[220px]">
+            <p className="text-sm text-white leading-relaxed mb-6 max-w-[220px]">
               We provide expert care services for crystal-clear, safe and happy senior living.
             </p>
           </div>
@@ -78,7 +78,7 @@ export default function Footer() {
               {quickLinks.map((item) => (
                 <li key={item} className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#C97B63] flex-shrink-0" />
-                  <Link href="#" className="text-sm text-[#B09080] hover:text-[#C97B63] transition-colors">
+                  <Link href="#" className="text-sm text-white hover:text-[#C97B63] transition-colors">
                     {item}
                   </Link>
                 </li>
@@ -93,7 +93,7 @@ export default function Footer() {
               {services.map((item) => (
                 <li key={item} className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#C97B63] flex-shrink-0" />
-                  <Link href="#" className="text-sm text-[#B09080] hover:text-[#C97B63] transition-colors">
+                  <Link href="#" className="text-sm text-white hover:text-[#C97B63] transition-colors">
                     {item}
                   </Link>
                 </li>
@@ -107,15 +107,15 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <Phone size={16} color="#C97B63" className="mt-0.5 flex-shrink-0" />
-                <span className="text-sm text-[#B09080]">+1 (234) 567 489</span>
+                <span className="text-sm text-white">+1 (234) 567 489</span>
               </li>
               <li className="flex items-start gap-3">
                 <Mail size={16} color="#C97B63" className="mt-0.5 flex-shrink-0" />
-                <span className="text-sm text-[#B09080]">info@domainname.com</span>
+                <span className="text-sm text-white">info@domainname.com</span>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin size={16} color="#C97B63" className="mt-0.5 flex-shrink-0" />
-                <span className="text-sm text-[#B09080] leading-relaxed">
+                <span className="text-sm text-white leading-relaxed">
                   123 High Street, Springfield,<br />London SW1A 1A, United Kingdom.
                 </span>
               </li>
@@ -124,11 +124,11 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="border-t border-[#5C4033] pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-sm text-white">
+        <div className="border-t border-[#5C4033] pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 h-[20%]">
+          <p className="text-lg text-white">
             Copyright © {new Date().getFullYear()} All Rights Reserved.
           </p>
-          <div className="flex items-center gap-2 text-sm text-white">
+          <div className="flex items-center gap-2 text-lg text-white">
             <Link href="#" className="hover:text-[#C97B63] transition-colors">Privacy Policy</Link>
             <span className="w-1.5 h-1.5 rounded-full bg-[#C97B63]" />
             <Link href="#" className="hover:text-[#C97B63] transition-colors">Terms & Conditions</Link>

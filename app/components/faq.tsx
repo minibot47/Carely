@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const faqs = [
   {
@@ -27,25 +28,65 @@ const faqs = [
 export default function FAQ() {
   const [open, setOpen] = useState<number | null>(null);
 
+  const text = "Answers to common questions about our care";
+
+  const container = {
+    hidden: {},
+    show: {
+      transition: {
+        staggerChildren: 0.15,
+      },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 40 },
+    show: { opacity: 1, y: 0 },
+  };
+
   return (
     <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16">
-          {/* Left */}
-          <div>
-            <p className="section-label mb-4">Frequently asked questions </p>
-            <h2 className="text-5xl mb-6">
-              Answers to common <br/> questions about our care
-            </h2>
-            <p className="text-[#9C8070] leading-relaxed text-normal mb-8">
-            We know that choosing the right care for your loved one comes with many questions. That’s why we’ve gathered the most common inquiries from families
+
+          {/* LEFT */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <p className="section-label mb-4">
+              Frequently asked questions
             </p>
+
+            {/* TYPEWRITER */}
+            <h2 className="text-5xl mb-6">
+              {text.split("").map((char, i) => (
+                <motion.span
+                  key={i}
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ delay: i * 0.03 }}
+                  viewport={{ once: true }}
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </h2>
+
+            <p className="text-[#9C8070] leading-relaxed text-normal mb-8">
+              We know that choosing the right care for your loved one comes with many questions. That’s why we’ve gathered the most common inquiries from families
+            </p>
+
+            {/* CARD */}
             <div className="bg-[#F0EDE6] w-[70%] h-fit rounded-2xl overflow-hidden shadow-sm">
               <div className="bg-[#2C1810] px-6 py-4">
                 <h2 className="text-white font-bold text-base">
                   Thinking About Elder Care? Let's Talk.
                 </h2>
               </div>
+
               <div className="px-6 py-5 flex w-full items-center">
                 <div className="w-[40%] border-r border-[#D4C0B0]">
                   <div className="px-2 py-1 flex flex-col gap-1">
@@ -55,9 +96,12 @@ export default function FAQ() {
                       </svg>
                       Call Us:
                     </div>
-                    <h2 className="text-sm text-[#5C4033] pl-6">+1 (234) 567 489</h2>
+                    <h2 className="text-sm text-[#5C4033] pl-6">
+                      +1 (234) 567 489
+                    </h2>
                   </div>
                 </div>
+
                 <div className="w-1/2">
                   <div className="px-5 py-1 flex flex-col gap-1">
                     <div className="flex items-center gap-2 font-bold text-sm text-[#2C1810]">
@@ -67,27 +111,41 @@ export default function FAQ() {
                       </svg>
                       E-mail Us:
                     </div>
-                    <h2 className="text-sm text-[#5C4033] pl-6">support@domain.com</h2>
+                    <h2 className="text-sm text-[#5C4033] pl-6">
+                      support@domain.com
+                    </h2>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Right — accordion */}
-          <div className="space-y-3">
+          {/* RIGHT */}
+          <motion.div
+            className="space-y-3"
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true }}
+          >
             {faqs.map((faq, i) => (
-              <div
+              <motion.div
                 key={i}
+                variants={item}
                 className={`rounded-xl border transition-colors ${
-                  open === i ? "border-[#C97B63] bg-[#FDF8F5]" : "border-[#EDE5DB] bg-white"
+                  open === i
+                    ? "border-[#C97B63] bg-[#FDF8F5]"
+                    : "border-[#EDE5DB] bg-white"
                 }`}
               >
                 <button
                   onClick={() => setOpen(open === i ? null : i)}
                   className="w-full text-left px-6 py-5 flex items-center justify-between gap-4"
                 >
-                  <span className="font-semibold text-[#2C1810] text-sm">{faq.q}</span>
+                  <span className="font-semibold text-[#2C1810] text-sm">
+                    {faq.q}
+                  </span>
+
                   <span
                     className={`text-[#C97B63] flex shrink-0 transition-transform text-lg ${
                       open === i ? "rotate-45" : ""
@@ -96,14 +154,21 @@ export default function FAQ() {
                     +
                   </span>
                 </button>
+
                 {open === i && (
-                  <div className="px-6 pb-5 text-sm text-[#9C8070] leading-relaxed">
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                    className="px-6 pb-5 text-sm text-[#9C8070] leading-relaxed"
+                  >
                     {faq.a}
-                  </div>
+                  </motion.div>
                 )}
-              </div>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
+
         </div>
       </div>
     </section>

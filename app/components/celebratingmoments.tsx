@@ -29,7 +29,7 @@ const stats = [
           <div className="grid grid-cols-3 gap-6 mb-16">
             {stats.map((s) => (
               <div key={s.label} className="text-center">
-                <div className="font-playfair text-5xl text-[#C97B63] mb-2">{s.value}</div>
+                <div className="font-jarkata text-5xl text-[#C97B63] mb-2">{s.value}</div>
                 <div className="text-sm text-[#9C8070]">{s.label}</div>
               </div>
             ))}
@@ -40,7 +40,7 @@ const stats = [
             {moments.map((m) => (
               <div key={m.title} className="card-warm text-center group hover:border-[#C97B63] transition-colors">
                 <div className="text-4xl mb-4">{m.emoji}</div>
-                <h3 className="font-playfair text-lg text-[#2C1810] mb-2">{m.title}</h3>
+                <h3 className="font-jarkata text-lg text-[#2C1810] mb-2">{m.title}</h3>
                 <p className="text-sm text-[#9C8070] leading-relaxed">{m.desc}</p>
               </div>
             ))}

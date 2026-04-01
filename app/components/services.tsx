@@ -1,4 +1,10 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+
+const LINE_1 = "Care services that prioritize";
+const LINE_2 = "health and happiness";
 
 const services = [
   {
@@ -49,8 +55,76 @@ const services = [
 ];
 
 export default function Services() {
+  // Typewriter state
+  const [line1, setLine1] = useState("");
+  const [line2, setLine2] = useState("");
+  const [typingLine, setTypingLine] = useState<1 | 2 | "done">(1);
+
+  // Refs for scroll animations
+  const sectionRef = useRef(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const ctaRef = useRef(null);
+
+  // Trigger typewriter when section scrolls into view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+
+        // Type line 1 first
+        let i = 0;
+        const t1 = setInterval(() => {
+          if (i < LINE_1.length) {
+            setLine1(LINE_1.slice(0, i + 1));
+            i++;
+          } else {
+            clearInterval(t1);
+            setTypingLine(2);
+
+            // Then type line 2
+            let j = 0;
+            const t2 = setInterval(() => {
+              if (j < LINE_2.length) {
+                setLine2(LINE_2.slice(0, j + 1));
+                j++;
+              } else {
+                clearInterval(t2);
+                setTypingLine("done");
+              }
+            }, 40);
+          }
+        }, 40);
+      },
+      { threshold: 0.3 }
+    );
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  // Slide-up for cards and CTA
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("translate-y-0", "opacity-100");
+            entry.target.classList.remove("translate-y-16", "opacity-0");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    cardRefs.current.forEach((ref) => ref && observer.observe(ref));
+    if (ctaRef.current) observer.observe(ctaRef.current);
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="services" className="py-24 bg-[#F0EDE6] rounded-[16px]">
+    <section id="services" ref={sectionRef} className="py-24 bg-[#F0EDE6] rounded-[16px]">
       <div className="max-w-6xl mx-auto px-6">
 
         {/* Header */}
@@ -59,20 +133,29 @@ export default function Services() {
             <span className="w-2 h-2 rounded-full bg-[#C97B63] inline-block" />
             <span className="text-2xl font-garamond text-[#C97B63] font-medium">Our services</span>
           </div>
-          <h2 className="font-jakarta font-semibold text-5xl text-[#2C1810] leading-tight">
-            Care services that prioritize
+
+          {/* Line 1 — jakarta bold */}
+          <h2 className="font-jakarta font-semibold text-5xl text-[#2C1810] leading-tight min-h-[3.5rem]">
+            {line1}
+            {typingLine === 1 && <span className="animate-pulse text-[#C97B63]">|</span>}
           </h2>
-          <h2 className="font-garamond text-5xl text-[#2C1810] leading-tight mt-1">
-            health and happiness
+
+          {/* Line 2 — garamond italic, only appears after line 1 is done */}
+          <h2 className="font-garamond text-5xl text-[#2C1810] leading-tight mt-1 min-h-[3.5rem]">
+            {line2}
+            {typingLine === 2 && <span className="animate-pulse text-[#C97B63]">|</span>}
           </h2>
         </div>
 
         {/* Cards */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
-          {services.map((s) => (
+          {services.map((s, idx) => (
             <div
               key={s.title}
-              className="bg-white rounded-2xl p-7 flex flex-col gap-5 shadow-sm hover:shadow-md transition-shadow"
+              ref={(el) => { cardRefs.current[idx] = el; }}
+              className="bg-white rounded-2xl p-7 flex flex-col gap-5 shadow-sm hover:shadow-md
+                translate-y-16 opacity-0 transition-all duration-700 ease-out"
+              style={{ transitionDelay: `${idx * 120}ms` }}
             >
               {/* Icon */}
               <div className="w-14 h-14 rounded-full bg-[#C97B63] flex items-center justify-center flex-shrink-0">
@@ -91,13 +174,7 @@ export default function Services() {
                   <li key={f} className="flex items-center gap-2 text-sm text-[#5C4033]">
                     <span className="w-5 h-5 rounded-full bg-[#F2DDD3] flex items-center justify-center flex-shrink-0">
                       <svg viewBox="0 0 16 16" fill="none" className="w-3 h-3">
-                        <path
-                          d="M3 8l3.5 3.5L13 5"
-                          stroke="#C97B63"
-                          strokeWidth="2"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
+                        <path d="M3 8l3.5 3.5L13 5" stroke="#C97B63" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     </span>
                     {f}
@@ -121,8 +198,13 @@ export default function Services() {
           ))}
         </div>
 
-        {/* Bottom CTA bar */}
-        <div className="flex items-center justify-center gap-3">
+        {/* Bottom CTA — slides up after cards */}
+        <div
+          ref={ctaRef}
+          className="flex items-center justify-center gap-3
+            translate-y-16 opacity-0 transition-all duration-700 ease-out"
+          style={{ transitionDelay: "500ms" }}
+        >
           <span className="bg-[#C97B63] text-white text-xs font-semibold px-3 py-1 rounded-full">
             Free
           </span>

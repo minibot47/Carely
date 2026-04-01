@@ -1,55 +1,41 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { motion, useMotionValue, useTransform, animate } from "framer-motion";
 
 const testimonials = [
   {
     quote:
       "After my father had a fall at home, we knew he needed more help than we could give. We were worried about the transition, but the team at [Facility Name] made it so smooth. From the first day.",
     name: "Jenny Wilson",
-    initials: "JW",
-    avatar: "/images/satisfy-client-img-1.jpg"
+    avatar: "/images/satisfy-client-img-1.jpg",
   },
   {
     quote:
       "When I moved in, I thought I was giving up my independence. But what I found was a new chapter. I've joined the painting club, made friends over tea, and even started doing yoga again.",
     name: "Sophia Reynolds",
-    avatar: "/images/satisfy-client-img-2.jpg"
+    avatar: "/images/satisfy-client-img-2.jpg",
   },
   {
     quote:
       "The care here is unlike anything I expected. Every staff member knows my name, my story, and what makes me smile.",
     name: "Robert James",
-    avatar: "/images/satisfy-client-img-3.jpg"
+    avatar: "/images/satisfy-client-img-3.jpg",
   },
   {
     quote:
       "The care here is unlike anything I expected. Every staff member knows my name, my story, and what makes me smile.",
     name: "Robert James",
-    avatar: "/images/satisfy-client-img-4.jpg"
-  },
-  {
-    quote:
-      "The care here is unlike anything I expected. Every staff member knows my name, my story, and what makes me smile.",
-    name: "Robert James",
-    initials: "RJ",
-    avatar: "/images/author-2.jpg"
-  },
-  {
-    quote:
-      "The care here is unlike anything I expected. Every staff member knows my name, my story, and what makes me smile.",
-    name: "Robert James",
-    initials: "RJ",
-    avatar: "/images/author-3.jpg"
+    avatar: "/images/satisfy-client-img-4.jpg",
   },
 ];
 
 const stats = [
-  { value: "250+", label: "Happy Residents" },
-  { value: "40+", label: "Trained Caregivers & Nurses" },
-  { value: "200+", label: "Activities Hosted Monthly" },
+  { value: 250, label: "Happy Residents" },
+  { value: 40, label: "Trained Caregivers & Nurses" },
+  { value: 200, label: "Activities Hosted Monthly" },
 ];
 
-const logos = ["Logoipsum", "Logoipsum", "Logoipsum", "Logoipsum", "Logoipsum", "Logoipsum"];
+const logos = ["Logoipsum", "Logoipsum", "Logoipsum", "Logoipsum", "Logoipsum"];
 
 const StarRating = () => (
   <div className="flex gap-1 mb-5">
@@ -67,94 +53,119 @@ const QuoteIcon = () => (
   </svg>
 );
 
+// Counter component
+const Counter = ({ value }: { value: number }) => {
+  const count = useMotionValue(0);
+  const rounded = useTransform(count, (latest) => Math.floor(latest));
+
+  useEffect(() => {
+    const controls = animate(count, value, {
+      duration: 2,
+      ease: "easeOut",
+    });
+
+    return controls.stop;
+  }, [value]);
+
+  return <motion.span>{rounded}</motion.span>;
+};
+
 export default function Testimonials() {
   const [page, setPage] = useState(0);
-  const totalPages = testimonials.length - 1;
+
+  // AUTO SLIDE
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setPage((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const visiblePair = [
     testimonials[page % testimonials.length],
     testimonials[(page + 1) % testimonials.length],
   ];
 
+  const heading = "What families say about our compassionate care";
+
   return (
     <section className="py-24 bg-[#47372d] rounded-[16px] mb-24">
       <div className="max-w-7xl mx-auto px-6">
 
-        {/* Header */}
-        <div className="text-center mb-14 relative">
+        {/* HEADER */}
+        <div className="text-center mb-14">
           <div className="flex items-center justify-center gap-2 mb-4">
             <span className="w-2 h-2 rounded-full bg-[#C97B63]" />
-            <span className="text-sm text-[#C97B63] italic font-medium">Testimonials</span>
+            <span className="text-sm text-[#C97B63] italic font-medium">
+              Testimonials
+            </span>
           </div>
-          <h2 className="font-playfair text-4xl md:text-5xl text-white leading-tight">
-            What families say about our
-          </h2>
-          <h2 className="font-playfair text-4xl md:text-5xl italic text-white leading-tight">
-            compassionate care
+
+          {/* TYPEWRITER */}
+          <h2 className="font-jarkata text-4xl md:text-5xl text-white leading-tight">
+            {heading.split("").map((char, i) => (
+              <motion.span
+                key={i}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: i * 0.03 }}
+              >
+                {char}
+              </motion.span>
+            ))}
           </h2>
         </div>
 
-        {/* Main content row */}
-        <div className="grid lg:grid-cols-[1fr_380px] gap-6 items-stretch">
+        {/* MAIN */}
+        <div className="grid lg:grid-cols-[1fr_380px] gap-6">
 
-          {/* Left — testimonial panel */}
-          <div className="bg-[#3D2B1F] rounded-2xl p-8 flex flex-col justify-between">
-            {/* Two testimonials side by side */}
-            <div className="grid md:grid-cols-2 gap-6 divide-x divide-[#5C4033]">
+          {/* TESTIMONIALS */}
+          <div className="bg-[#3D2B1F] rounded-2xl p-8">
+            <motion.div
+              key={page}
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="grid md:grid-cols-2 gap-6"
+            >
               {visiblePair.map((t, i) => (
-                <div key={t.name} className={`flex flex-col gap-4 ${i === 1 ? "pl-2" : "pr-4"}`}>
+                <div key={i} className="flex flex-col gap-4">
                   <StarRating />
-                  <p className="text-white text-sm leading-relaxed flex-1">
-                    "{t.quote}"
-                  </p>
+                  <p className="text-white text-sm">"{t.quote}"</p>
+
                   <div className="flex items-center justify-between mt-4 pt-4 border-t border-[#5C4033]">
                     <div className="flex items-center gap-3">
-                      {/* Avatar placeholder */}
-                      <div className="w-10 h-10 rounded-full bg-[#C97B63]/40 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">
-                        <img src={t.avatar} alt={t.name} className="object-cover rounded-full" />
-                      </div>
-                      <span className="font-bold text-white text-sm">{t.name}</span>
+                      <img
+                        src={t.avatar}
+                        className="w-10 h-10 rounded-full object-cover"
+                      />
+                      <span className="text-white text-sm font-bold">
+                        {t.name}
+                      </span>
                     </div>
                     <QuoteIcon />
                   </div>
                 </div>
               ))}
-            </div>
-
-            {/* Pagination dots */}
-            <div className="flex items-center gap-2 mt-8">
-              {Array.from({ length: totalPages }).map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setPage(i)}
-                  className={`rounded-full transition-all ${
-                    page === i
-                      ? "w-6 h-3 bg-[#C97B63]"
-                      : "w-3 h-3 bg-[#5C4033] hover:bg-[#8B6355]"
-                  }`}
-                  aria-label={`Page ${i + 1}`}
-                />
-              ))}
-            </div>
+            </motion.div>
           </div>
 
-          {/* Right — stats over image */}
-          <div className="relative rounded-2xl overflow-hidden min-h-[360px]">
-            {/* Background image placeholder */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#6B4C3B] to-[#2E1A10]">
-              <img src="/images/testimonial-img.jpg" alt="Senior care"  className="object-cover" />
+          {/* STATS */}
+          <div className="relative rounded-2xl overflow-hidden">
+            <div className="absolute inset-0">
+              <img src="/images/testimonial-img.jpg" className="object-cover w-full h-full" />
             </div>
-            {/* Dark overlay */}
-            <div className="absolute inset-0 bg-[#2E1A10]/60" />
 
-            {/* Stats */}
-            <div className="relative z-10 flex flex-col justify-center h-full p-8 gap-8">
-              {stats.map((s) => (
-                <div key={s.label}>
-                  <div className="font-playfair text-5xl font-bold text-white leading-none mb-1">
-                    {s.value}
+            <div className="absolute inset-0 bg-black/50" />
+
+            <div className="relative z-10 p-8 space-y-6">
+              {stats.map((s, i) => (
+                <div key={i}>
+                  <div className="text-5xl text-white font-bold">
+                    <Counter value={s.value} />
                   </div>
-                  <div className="text-[#D4C0B0] text-sm font-semibold">{s.label}</div>
+                  <div className="text-sm text-[#D4C0B0]">{s.label}</div>
                 </div>
               ))}
             </div>
@@ -162,23 +173,34 @@ export default function Testimonials() {
 
         </div>
 
-        {/* Real stories tagline */}
-        <p className="text-center text-white font-bold text-xl mt-14 mb-10 leading-snug">
-          Real Stories From Residents and Their<br />Families
-        </p>
+        {/* BOTTOM TEXT */}
+        <motion.p
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          className="text-center text-white font-bold text-xl mt-14 mb-10"
+        >
+          Real Stories From Residents and Their
+          <br />
+          Families
+        </motion.p>
 
-        {/* Logo strip */}
-        <div className="flex items-center justify-between gap-4 flex-wrap">
-          {logos.map((logo, i) => (
-            <div key={i} className="flex items-center gap-2 text-[#9C7060] hover:text-[#C97B63] transition-colors">
-              <div className="w-8 h-8 rounded-full bg-[#5C4033] flex items-center justify-center">
-                <svg viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4 text-[#C97B63]">
-                  <path d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
+        {/* LOGOS */}
+        <div className="overflow-hidden">
+          <motion.div
+            className="flex gap-10"
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{
+              repeat: Infinity,
+              duration: 10,
+              ease: "linear",
+            }}
+          >
+            {[...logos, ...logos].map((logo, i) => (
+              <div key={i} className="text-[#9C7060] whitespace-nowrap">
+                {logo}
               </div>
-              <span className="text-sm font-semibold">{logo}</span>
-            </div>
-          ))}
+            ))}
+          </motion.div>
         </div>
 
       </div>

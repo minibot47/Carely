@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 
 const services = [
   {
@@ -64,9 +67,71 @@ const services = [
   },
 ];
 
+const LINE_1 = "Comprehensive elderly care";
+const LINE_2 = "for every life stage";
+
 export default function WhatWeDo() {
+  const sectionRef = useRef(null);
+
+  // Typewriter
+  const [line1, setLine1] = useState("");
+  const [line2, setLine2] = useState("");
+  const [typingLine, setTypingLine] = useState<1 | 2 | "done">(1);
+
+  // Slide-up refs
+  const bodyRef = useRef(null);
+  const ctaRef = useRef(null);
+  const serviceRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  // Typewriter — fires when section scrolls into view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+
+        let i = 0;
+        const t1 = setInterval(() => {
+          if (i < LINE_1.length) { setLine1(LINE_1.slice(0, i + 1)); i++; }
+          else {
+            clearInterval(t1);
+            setTypingLine(2);
+            let j = 0;
+            const t2 = setInterval(() => {
+              if (j < LINE_2.length) { setLine2(LINE_2.slice(0, j + 1)); j++; }
+              else { clearInterval(t2); setTypingLine("done"); }
+            }, 40);
+          }
+        }, 40);
+      },
+      { threshold: 0.2 }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  // Slide-up for body, cta, and service cards
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("translate-y-0", "opacity-100");
+            entry.target.classList.remove("translate-y-16", "opacity-0");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (bodyRef.current) observer.observe(bodyRef.current);
+    if (ctaRef.current) observer.observe(ctaRef.current);
+    serviceRefs.current.forEach((r) => r && observer.observe(r));
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <section id="what-we-do" className="py-24 px-10 bg-white mt-10">
+    <section ref={sectionRef} id="what-we-do" className="py-24 px-10 bg-white mt-10">
       <div className="max-w-[1440px] m-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
 
@@ -78,14 +143,26 @@ export default function WhatWeDo() {
               <span className="text-2xl text-[#C97B63] font-garamond font-medium">What we do</span>
             </div>
 
-            {/* Heading */}
-            <h2 className="font-jarkata text-5xl font-semibold text-[#2C1810] leading-tight mb-2">
-              Comprehensive elderly care <span className="font-garamond font-thin">for every life stage</span>
+            {/* Typewriter heading */}
+            <h2 className="font-jarkata text-5xl font-semibold text-[#2C1810] leading-tight mb-2 min-h-[8rem]">
+              {line1}
+              {typingLine === 1 && <span className="animate-pulse text-[#C97B63]">|</span>}
+              {(typingLine === 2 || typingLine === "done") && (
+                <>
+                  {" "}
+                  <span className="font-garamond font-thin">
+                    {line2}
+                    {typingLine === 2 && <span className="animate-pulse text-[#C97B63]">|</span>}
+                  </span>
+                </>
+              )}
             </h2>
 
-
-            {/* Body */}
-            <div className="flex items-start gap-3 mb-10">
+            {/* Body slides up */}
+            <div
+              ref={bodyRef}
+              className="flex items-start gap-3 mb-10 translate-y-16 opacity-0 transition-all duration-700 ease-out"
+            >
               <span className="w-2 h-2 rounded-full bg-[#C97B63] mt-2 flex-shrink-0" />
               <p className="text-sm text-[#9C8070] leading-relaxed">
                 We provide personalized care that goes beyond daily support. From assisted
@@ -93,25 +170,34 @@ export default function WhatWeDo() {
               </p>
             </div>
 
-            {/* CTA */}
-            <Link
-              href="#contact"
-              className="inline-flex items-center gap-2 bg-[#C97B63] text-white px-6 py-3 rounded-xl text-sm font-semibold hover:bg-[#A85F48] transition-colors"
+            {/* CTA slides up with a slight delay */}
+            <div
+              ref={ctaRef}
+              className="translate-y-16 opacity-0 transition-all duration-700 ease-out delay-150"
             >
-              Contact Us
-              <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4" stroke="currentColor" strokeWidth="1.5">
-                <path d="M3 13L13 3M13 3H6M13 3v7" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </Link>
+              <Link
+                href="#contact"
+                className="inline-flex items-center gap-2 bg-[#C97B63] text-white px-6 py-3 rounded-xl text-sm font-semibold hover:bg-[#A85F48] transition-colors"
+              >
+                Contact Us
+                <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M3 13L13 3M13 3H6M13 3v7" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </Link>
+            </div>
           </div>
 
           {/* ── Right col — service grid ── */}
           <div className="grid grid-cols-2 gap-x-8 gap-y-10">
-            {services.map((s) => (
-              <div key={s.title} className="flex gap-4 items-start group">
+            {services.map((s, idx) => (
+              <div
+                key={s.title}
+                ref={(el) => { serviceRefs.current[idx] = el; }}
+                className="flex gap-4 items-start group translate-y-16 opacity-0 transition-all duration-700 ease-out"
+                style={{ transitionDelay: `${idx * 100}ms` }}
+              >
                 {/* Icon circle */}
                 <div className="w-12 h-12 rounded-full bg-[#E8C5B5] flex items-center justify-center flex-shrink-0 group-hover:bg-[#C97B63] transition-colors">
-                  {/* Re-colour icon stroke on hover via parent */}
                   <div className="[&_svg]:stroke-[#C97B63] group-hover:[&_svg]:stroke-white transition-colors">
                     {s.icon}
                   </div>

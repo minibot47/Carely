@@ -1,6 +1,56 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+
+const HEADING = "Backed by experience, guided by empathy — we provide expert care that prioritizes senior wellness, independence,";
+const HEADING_SUFFIX = " and family peace of mind.";
 
 export default function About() {
+  const [displayed, setDisplayed] = useState("");
+  const [done, setDone] = useState(false);
+
+  const card1Ref = useRef(null);
+  const card2Ref = useRef(null);
+  const card3Ref = useRef(null);
+
+  // Typewriter effect
+  useEffect(() => {
+    let i = 0;
+    const interval = setInterval(() => {
+      if (i < HEADING.length) {
+        setDisplayed(HEADING.slice(0, i + 1));
+        i++;
+      } else {
+        setDone(true);
+        clearInterval(interval);
+      }
+    }, 30); // fast enough to feel snappy
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Slide-up effect for cards using IntersectionObserver
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("translate-y-0", "opacity-100");
+            entry.target.classList.remove("translate-y-16", "opacity-0");
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+
+    [card1Ref, card2Ref, card3Ref].forEach((ref) => {
+      if (ref.current) observer.observe(ref.current);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="w-full h-fit mb-32 px-4">
 
@@ -25,17 +75,30 @@ export default function About() {
           <span className="w-2 h-2 rounded-full bg-[#C97B63]" />
           <span className="text-2xl text-[#C97B63] font-garamond font-medium">About us</span>
         </div>
-        <h1 className="font-bold font-jakarta text-center text-3xl sm:text-5xl  text-[#2C1810] leading-tight w-full">
-          Backed by experience, guided by empathy — we <br/> provide expert care that prioritizes senior wellness,<br/>
-          independence, <span className=" font-normal font-garamond text-black">and family peace of mind.</span>
+
+                {/* Heading — clean typewriter, no ghost */}
+        <h1 className="font-bold font-jakarta text-center text-3xl sm:text-5xl leading-tight w-full">
+          <span className="text-[#2C1810]">
+            {displayed}
+            {!done && <span className="animate-pulse text-[#C97B63]">|</span>}
+            {done && (
+              <span className="font-normal font-garamond text-black">
+                {HEADING_SUFFIX}
+              </span>
+            )}
+          </span>
         </h1>
+
+        {/* Button fades in after typing */}
         <Link
           href="#contact"
-          className="mt-10 mb-5 bg-[#dbb34f] flex gap-2 items-center hover:bg-[#A85F48] transition-colors text-white font-semibold text-base px-8 py-3 rounded-2xl"
+          className={`mt-10 mb-5 bg-[#dbb34f] flex gap-2 items-center hover:bg-[#A85F48] transition-all text-white font-semibold text-base px-8 py-3 rounded-2xl duration-700 ${
+            done ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          }`}
         >
           Discover More
           <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5" stroke="currentColor" strokeWidth="2">
-              <path d="M3 13L13 3M13 3H7M13 3v6" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M3 13L13 3M13 3H7M13 3v6" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </Link>
       </div>
@@ -44,13 +107,14 @@ export default function About() {
       <div className="w-[90%] max-w-[1440px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
         {/* Card 1 */}
-        <div className="min-h-[340px] lg:h-[45vh] p-8 flex flex-col gap-2 bg-[#F0EDE6] items-center justify-end rounded-[16px]">
-            <div
-                className="w-40 h-40 sm:w-44 sm:h-44 mb-4 flex-shrink-0 relative"
-                style={{ clipPath: "url(#flower)" }}
-            >
-                <img src="/images/about-img-2.jpg" alt="Nursing" className="object-cover"/>
-            </div>
+        <div
+          ref={card1Ref}
+          className="min-h-[340px] lg:h-[45vh] p-8 flex flex-col gap-2 bg-[#F0EDE6] items-center justify-end rounded-[16px]
+            translate-y-16 opacity-0 transition-all duration-700 ease-out"
+        >
+          <div className="w-40 h-40 sm:w-44 sm:h-44 mb-4 flex-shrink-0 relative" style={{ clipPath: "url(#flower)" }}>
+            <img src="/images/about-img-2.jpg" alt="Nursing" className="object-cover w-full h-full" />
+          </div>
           <h2 className="text-lg font-bold text-[#2C1810] text-center">24/7 Skilled Nursing Support</h2>
           <p className="text-sm text-[#9C8070] text-center leading-relaxed">
             Round-the-clock medical care and supervision for complete peace of mind.
@@ -58,12 +122,13 @@ export default function About() {
         </div>
 
         {/* Card 2 */}
-        <div className="min-h-[340px] lg:h-[45vh] p-8 flex flex-col gap-2 bg-[#F0EDE6] items-center justify-end rounded-[16px] relative">
-          <div
-            className="w-40 h-40 sm:w-44 sm:h-44 mb-4 shrink-0"
-            style={{ clipPath: "url(#asterisk)" }}
-          >
-            <img src="/images/about-img-1.jpg" alt="Nursing" className="object-cover"/>
+        <div
+          ref={card2Ref}
+          className="min-h-[340px] lg:h-[45vh] p-8 flex flex-col gap-2 bg-[#F0EDE6] items-center justify-end rounded-[16px] relative
+            translate-y-16 opacity-0 transition-all duration-700 ease-out delay-150"
+        >
+          <div className="w-40 h-40 sm:w-44 sm:h-44 mb-4 shrink-0" style={{ clipPath: "url(#asterisk)" }}>
+            <img src="/images/about-img-1.jpg" alt="Nursing" className="object-cover w-full h-full" />
           </div>
           <h2 className="text-lg font-bold text-[#2C1810] text-center">Personalized Care Plans</h2>
           <p className="text-sm text-[#9C8070] text-center leading-relaxed">
@@ -71,13 +136,14 @@ export default function About() {
           </p>
         </div>
 
-        {/* Card 3 — spans full width on sm (2-col), normal on lg */}
-        <div className="min-h-[340px] lg:h-[45vh] p-8 flex flex-col gap-2 bg-[#F0EDE6] items-center justify-end rounded-[16px] sm:col-span-2 lg:col-span-1">
-          <div
-            className="w-40 h-40 sm:w-44 sm:h-44 mb-4 shrink-0"
-            style={{ clipPath: "url(#blob)" }}
-          >
-            <img src="/images/about-img-3.jpg" alt="Nursing" className="object-cover"/>
+        {/* Card 3 */}
+        <div
+          ref={card3Ref}
+          className="min-h-[340px] lg:h-[45vh] p-8 flex flex-col gap-2 bg-[#F0EDE6] items-center justify-end rounded-[16px] sm:col-span-2 lg:col-span-1
+            translate-y-16 opacity-0 transition-all duration-700 ease-out delay-300"
+        >
+          <div className="w-40 h-40 sm:w-44 sm:h-44 mb-4 shrink-0" style={{ clipPath: "url(#blob)" }}>
+            <img src="/images/about-img-3.jpg" alt="Nursing" className="object-cover w-full h-full" />
           </div>
           <h2 className="text-lg font-bold text-[#2C1810] text-center">Safe, Homelike Environment</h2>
           <p className="text-sm text-[#9C8070] text-center leading-relaxed">
