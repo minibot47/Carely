@@ -103,15 +103,20 @@ export default function CompassionateCare() {
             </div>
 
             {/* Typewriter heading */}
-            <h2 className="w-full text-5xl text-center font-bold min-h-32">
+            <h2 className="w-full text-5xl text-center font-semibold min-h-32">
               {line1}
-              {typingLine === 1 && <span className="animate-pulse text-[#C97B63]">|</span>}
-              {(typingLine === 2 || typingLine === "done") && (
+              {typingLine === 1 && (
+                <span className="animate-pulse text-[#C97B63]">|</span>
+              )}
+
+              {line2 && (
                 <>
                   <br />
-                  <span>
+                  <span className="font-lora font-thin">
                     {line2}
-                    {typingLine === 2 && <span className="animate-pulse font-lora font-thin text-[#C97B63]">|</span>}
+                    {typingLine === 2 && (
+                      <span className="animate-pulse text-[#C97B63]">|</span>
+                    )}
                   </span>
                 </>
               )}

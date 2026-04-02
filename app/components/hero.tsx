@@ -39,7 +39,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen pl-5 pr-5 pb-16  overflow-hidden mt-2 mb-32 rounded-[16px] flex items-end">
+    <section className="relative min-h-screen pl-5 pr-5 pb-16 2xl:px-20 2xl:py-10  overflow-hidden mt-2 mb-32 rounded-[16px] flex items-end">
       {/* Background with parallax */}
       <div
         ref={bgRef}
