@@ -157,7 +157,7 @@ useEffect(() => {
             {/* Label */}
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#C97B63]" />
-              <span className="text-2xl text-[#C97B63] font-medium font-garamond">Our fun facts</span>
+              <span className="text-2xl text-[#C97B63] font-medium font-lora">Our fun facts</span>
             </div>
 
             {/* Typewriter heading */}
@@ -171,7 +171,7 @@ useEffect(() => {
                   {line2}
                   {typingLine === 2 && <span className="animate-pulse text-[#C97B63]">|</span>}
                   {(typingLine === 3 || typingLine === "done") && (
-                    <span className="font-garamond">
+                    <span className="font-lora">
                       {" "}{line3}
                       {typingLine === 3 && <span className="animate-pulse text-[#C97B63]">|</span>}
                     </span>

@@ -2,8 +2,8 @@
 
 /* ── Tailwind v4 theme tokens ── */
 @theme {
-  --font-jakarta : "jakarta" , sans-serif;
-  --font-garamond : "garamond" , sans-serif;
+  --font-jakarta: var(--font-jakarta), sans-serif;
+  --font-lora: var(--font-lora), sans-serif;
 }
 
 

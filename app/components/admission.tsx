@@ -177,7 +177,7 @@ export default function Admission() {
               {typingLine === 1 && <span className="animate-pulse text-[#C97B63]">|</span>}
             </h2>
             {(typingLine === 2 || typingLine === "done") && (
-              <h2 className="font-jarkata text-5xl italic text-[#2C1810] leading-tight">
+              <h2 className="font-lora italic text-5xl  text-[#2C1810] leading-tight">
                 {line2}
                 {typingLine === 2 && <span className="animate-pulse text-[#C97B63]">|</span>}
               </h2>

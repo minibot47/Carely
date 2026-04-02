@@ -59,9 +59,9 @@ export default function Hero() {
         <div className="w-[80%] py-5">
 
           {/* Typewriter heading */}
-          <h1 className="font-jakarta font-semibold text-5xl md:text-6xl lg:text-6xl text-white leading-tight mb-6">
-            Trusted senior care designed with heart{" "}
-            <span className="font-garamond italic font-medium text-7xl">
+          <h1 className="font-jakarta font-semibold text-5xl md:text-5xl lg:text-5xl text-white leading-tight mb-6">
+            Trusted senior care designed with heart{" "}<br/>
+            <span className="font-lora italic font-medium text-5xl">
               {displayed}
               {!done && <span className="animate-pulse text-[#f3c4c4]">|</span>}
             </span>

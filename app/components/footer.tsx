@@ -21,8 +21,8 @@ export default function Footer() {
         <div className="flex items-start justify-between gap-6 pb-8 border-b border-[#5C4033] h-[40%] ">
           <h2 className="text-4xl md:text-5xl text-white leading-tight w-[80%]">
             <span className="font-semibold font-jarkata">Your questions answered, your </span>
-            <span className="font-garamond">trust</span><br/>
-            <span className="font-garamond">respected always</span>
+            <span className="font-lora">trust</span><br/>
+            <span className="font-lora">respected always</span>
           </h2>
 
           {/* Spinning badge */}

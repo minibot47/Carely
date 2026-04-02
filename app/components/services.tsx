@@ -131,7 +131,7 @@ export default function Services() {
         <div className="text-center mb-14">
           <div className="flex items-center justify-center gap-2 mb-4">
             <span className="w-2 h-2 rounded-full bg-[#C97B63] inline-block" />
-            <span className="text-2xl font-garamond text-[#C97B63] font-medium">Our services</span>
+            <span className="text-2xl font-lora text-[#C97B63] font-medium">Our services</span>
           </div>
 
           {/* Line 1 — jakarta bold */}
@@ -141,7 +141,7 @@ export default function Services() {
           </h2>
 
           {/* Line 2 — garamond italic, only appears after line 1 is done */}
-          <h2 className="font-garamond text-5xl text-[#2C1810] leading-tight mt-1 min-h-[3.5rem]">
+          <h2 className="font-lora text-5xl text-[#2C1810] leading-tight mt-1 min-h-[3.5rem]">
             {line2}
             {typingLine === 2 && <span className="animate-pulse text-[#C97B63]">|</span>}
           </h2>

@@ -73,7 +73,7 @@ export default function About() {
       <div className="flex flex-col items-center justify-center mb-12 px-4">
         <div className="flex items-center gap-2 mb-4">
           <span className="w-2 h-2 rounded-full bg-[#C97B63]" />
-          <span className="text-2xl text-[#C97B63] font-garamond font-medium">About us</span>
+          <span className="text-2xl text-[#C97B63] font-lora font-medium">About us</span>
         </div>
 
                 {/* Heading — clean typewriter, no ghost */}
@@ -82,7 +82,7 @@ export default function About() {
             {displayed}
             {!done && <span className="animate-pulse text-[#C97B63]">|</span>}
             {done && (
-              <span className="font-normal font-garamond text-black">
+              <span className="font-normal font-lora text-black">
                 {HEADING_SUFFIX}
               </span>
             )}
@@ -92,7 +92,7 @@ export default function About() {
         {/* Button fades in after typing */}
         <Link
           href="#contact"
-          className={`mt-10 mb-5 bg-[#dbb34f] flex gap-2 items-center hover:bg-[#A85F48] transition-all text-white font-semibold text-base px-8 py-3 rounded-2xl duration-700 ${
+          className={`mt-10 mb-5 bg-[#d4cec1] flex gap-2 items-center hover:bg-[#A85F48] transition-all text-white font-semibold text-base px-8 py-3 rounded-2xl duration-700 ${
             done ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >

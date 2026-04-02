@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { EB_Garamond, Plus_Jakarta_Sans } from "next/font/google";
+import { Lora, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import CustomCursor from "./components/customcursor";
 
-const garamond = EB_Garamond({
+const lora = Lora({
   subsets: ["latin"],
-  variable: "--font-garamond",
+  variable: "--font-lora",
   display: "swap",
 });
 
@@ -33,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={` ${jakarta.variable} ${garamond.variable}  font-sans antialiased`}
+        className={`${jakarta.variable} ${lora.variable} font-sans antialiased`}
       >
         <CustomCursor />
         {children}

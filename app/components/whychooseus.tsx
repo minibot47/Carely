@@ -115,7 +115,7 @@ export default function WhyChooseUs() {
           <div className="w-[55%]">
             <div className="flex items-center gap-2 mb-5">
               <span className="w-2 h-2 rounded-full bg-[#C97B63]" />
-              <span className="text-2xl text-[#C97B63] font-medium font-garamond">Why Choose Us</span>
+              <span className="text-2xl text-[#C97B63] font-medium font-lora">Why Choose Us</span>
             </div>
 
             <h2 className="font-jakarta font-semibold text-5xl text-[#2C1810] leading-tight mb-2 min-h-[7rem]">
@@ -124,7 +124,7 @@ export default function WhyChooseUs() {
               {(typingLine === 2 || typingLine === "done") && (
                 <>
                   <br />
-                  <span className="font-garamond font-normal">
+                  <span className="font-lora font-normal">
                     {line2}
                     {typingLine === 2 && <span className="animate-pulse text-[#C97B63]">|</span>}
                   </span>

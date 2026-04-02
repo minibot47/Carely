@@ -113,7 +113,7 @@ export default function Team() {
             {(typingLine === 2 || typingLine === "done") && (
               <>
                 <br />
-                <span className="font-garamond italic font-normal">
+                <span className="font-lora italic font-normal">
                   {line2}
                   {typingLine === 2 && <span className="animate-pulse text-[#C97B63]">|</span>}
                 </span>

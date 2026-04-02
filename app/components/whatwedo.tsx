@@ -140,7 +140,7 @@ export default function WhatWeDo() {
             {/* Label */}
             <div className="flex items-center gap-2 mb-5">
               <span className="w-2 h-2 rounded-full bg-[#C97B63]" />
-              <span className="text-2xl text-[#C97B63] font-garamond font-medium">What we do</span>
+              <span className="text-2xl text-[#C97B63] font-lora font-medium">What we do</span>
             </div>
 
             {/* Typewriter heading */}
@@ -150,7 +150,7 @@ export default function WhatWeDo() {
               {(typingLine === 2 || typingLine === "done") && (
                 <>
                   {" "}
-                  <span className="font-garamond font-thin">
+                  <span className="font-lora font-thin">
                     {line2}
                     {typingLine === 2 && <span className="animate-pulse text-[#C97B63]">|</span>}
                   </span>
