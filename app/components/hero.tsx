@@ -49,7 +49,7 @@ export default function Hero() {
         <img
           src="/images/hero-img.jpg"
           alt="Senior care"
-          className="object-contain object-center h-full w-full scale-100"
+          className="object-contain object-start h-full w-full scale-120"
         />
         <div className="absolute inset-0 bg-linear-to-r from-[#2E2018]/10 via-[#2E2018]/20 to-transparent" />
         

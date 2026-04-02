@@ -15,8 +15,8 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="top-0 left-0 right-0 z-50 ">
-      <div className="  h-25 flex items-center justify-between">
+    <nav className="top-0 left-0 right-0 z-50 2xl:px-10  ">
+      <div className="  h-25 flex items-center justify-between px-0 2xl:px-5">
 
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 flex-shrink-0">
@@ -29,7 +29,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Nav — centered */}
-        <div className="hidden md:flex items-center gap-7 text-[16px] font-semibold text-[#2C1810]">
+        <div className="hidden md:flex items-center gap-10 text-[18px] font-semibold text-[#2C1810] ">
           {navLinks.map((item) => (
             <Link
               key={item.label}

@@ -15,7 +15,7 @@ import Admission from "./components/admission";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white pl-5 pr-5 pb-20  ">
+    <main className="min-h-screen bg-white pl-5 pr-5 pb-10 2xl:px-12  ">
       <Navbar />
       <Hero />
       <About/>
