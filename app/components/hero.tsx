@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 const TYPED_TEXT = "respect, and experience";
 
 export default function Hero() {
-  const bgRef = useRef(null);
+  const bgRef = useRef<HTMLDivElement>(null);
   const [displayed, setDisplayed] = useState("");
   const [done, setDone] = useState(false);
 
