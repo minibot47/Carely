@@ -106,7 +106,7 @@ export default function WhyChooseUs() {
   }, []);
 
   return (
-    <section id="why-choose-us" ref={sectionRef} className="py-24 px-10 bg-white">
+    <section id="why-choose-us" ref={sectionRef} className="py-24  bg-white">
       <div className="max-w-[1440px] mx-auto mt-10">
 
         <div className="flex gap-12 mb-12">
@@ -178,7 +178,7 @@ export default function WhyChooseUs() {
           {/* Play button with pulsing rings */}
           <button
             aria-label="Play video"
-            className="absolute inset-0 flex items-center justify-center group"
+            className="absolute inset-0 flex items-center -mt-[100px] justify-center group"
           >
             <div className="relative flex items-center justify-center">
               <span className="absolute w-24 h-24 rounded-full bg-[#E6A493]/20 animate-ping" />
