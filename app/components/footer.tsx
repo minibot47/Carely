@@ -26,7 +26,7 @@ export default function Footer() {
           </h2>
 
           {/* Spinning badge */}
-          <div className="relative w-28 h-28 flex-shrink-0 hidden md:flex items-center justify-center">
+          <div className="relative w-28 h-28 shrink-0 hidden md:flex items-center justify-center">
             <svg
               viewBox="0 0 100 100"
               className="w-full h-full animate-spin"
@@ -59,7 +59,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-full bg-[#C97B63]/30 flex items-center justify-center flex-shrink-0">
+              <div className="w-10 h-10 rounded-full bg-[#C97B63]/30 flex items-center justify-center shrink-0">
                 <img src="/logos/Logo.png" alt="logo"/>
               </div>
               <span className="font-jarkata text-5xl text-white font-bold">
@@ -77,7 +77,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {quickLinks.map((item) => (
                 <li key={item} className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#C97B63] flex-shrink-0" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#C97B63] shrink-0" />
                   <Link href="#" className="text-sm text-white hover:text-[#C97B63] transition-colors">
                     {item}
                   </Link>
@@ -92,7 +92,7 @@ export default function Footer() {
             <ul className="space-y-3">
               {services.map((item) => (
                 <li key={item} className="flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#C97B63] flex-shrink-0" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#C97B63] shrink-0" />
                   <Link href="#" className="text-sm text-white hover:text-[#C97B63] transition-colors">
                     {item}
                   </Link>
@@ -106,15 +106,15 @@ export default function Footer() {
             <h4 className="text-white font-semibold mb-5">Get In Touch</h4>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <Phone size={16} color="#C97B63" className="mt-0.5 flex-shrink-0" />
+                <Phone size={16} color="#C97B63" className="mt-0.5 shrink-0" />
                 <span className="text-sm text-white">+1 (234) 567 489</span>
               </li>
               <li className="flex items-start gap-3">
-                <Mail size={16} color="#C97B63" className="mt-0.5 flex-shrink-0" />
+                <Mail size={16} color="#C97B63" className="mt-0.5 shrink-0" />
                 <span className="text-sm text-white">info@domainname.com</span>
               </li>
               <li className="flex items-start gap-3">
-                <MapPin size={16} color="#C97B63" className="mt-0.5 flex-shrink-0" />
+                <MapPin size={16} color="#C97B63" className="mt-0.5 shrink-0" />
                 <span className="text-sm text-white leading-relaxed">
                   123 High Street, Springfield,<br />London SW1A 1A, United Kingdom.
                 </span>

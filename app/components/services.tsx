@@ -148,12 +148,12 @@ export default function Services() {
         </div>
 
         {/* Cards */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-10">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10 min-h-[400px] ">
           {services.map((s, idx) => (
             <div
               key={s.title}
               ref={(el) => { cardRefs.current[idx] = el; }}
-              className="bg-white rounded-2xl p-7 flex flex-col gap-5 shadow-sm hover:shadow-md
+              className="bg-white rounded-2xl p-7 flex flex-col gap-8 shadow-sm hover:shadow-md
                 translate-y-16 opacity-0 transition-all duration-700 ease-out"
               style={{ transitionDelay: `${idx * 120}ms` }}
             >

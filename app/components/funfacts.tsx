@@ -161,7 +161,7 @@ useEffect(() => {
             </div>
 
             {/* Typewriter heading */}
-            <div className="min-h-[10rem]">
+            <div className="min-h-40">
               <h2 className="font-jarkata text-5xl text-white leading-tight">
                 {line1}
                 {typingLine === 1 && <span className="animate-pulse text-[#C97B63]">|</span>}
@@ -193,7 +193,7 @@ useEffect(() => {
             </div>
 
             {/* Bottom photo — wipe in from left */}
-            <div className="rounded-2xl overflow-hidden bg-gradient-to-br from-[#6B4C3B] to-[#2E1A10]">
+            <div className="rounded-2xl overflow-hidden bg-linear-to-br from-[#6B4C3B] to-[#2E1A10]">
               <div
                 ref={img2Ref}
                 style={{
@@ -209,7 +209,7 @@ useEffect(() => {
           {/* ── Right column ── */}
           <div className="flex flex-col gap-8">
             {/* Top photo — wipe in from left */}
-            <div className="rounded-2xl overflow-hidden bg-gradient-to-br from-[#8B6355] to-[#4A3020]">
+            <div className="rounded-2xl overflow-hidden bg-linear-to-br from-[#8B6355] to-[#4A3020]">
               <div
                 ref={img1Ref}
                 style={{
@@ -232,7 +232,7 @@ useEffect(() => {
                     className="flex items-center gap-3 translate-y-16 opacity-0 transition-all duration-700 ease-out"
                     style={{ transitionDelay: `${idx * 120}ms` }}
                   >
-                    <span className="w-5 h-5 rounded-full bg-[#C97B63]/20 flex items-center justify-center flex-shrink-0">
+                    <span className="w-5 h-5 rounded-full bg-[#C97B63]/20 flex items-center justify-center shrink-0">
                       <svg viewBox="0 0 16 16" fill="none" className="w-3 h-3">
                         <path d="M3 8l3.5 3.5L13 5" stroke="#C97B63" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
@@ -243,7 +243,7 @@ useEffect(() => {
               </div>
 
               {/* Spinning badge */}
-              <div className="relative w-28 h-28 flex-shrink-0 hidden md:flex items-center justify-center">
+              <div className="relative w-28 h-28 shrink-0 hidden md:flex items-center justify-center">
                 <svg viewBox="0 0 100 100" className="w-full h-full animate-spin" style={{ animationDuration: "10s" }}>
                   <defs>
                     <path id="footer-circle" d="M 50,50 m -35,0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" />

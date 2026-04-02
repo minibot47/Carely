@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
-import { motion, Variants, easeOut } from "framer-motion";
-
+import { motion, Variants } from "framer-motion";
 
 const posts = [
   {
@@ -21,8 +20,7 @@ const posts = [
   },
 ];
 
-// STAGGER CONTAINER
-const container = {
+const container: Variants = {
   hidden: {},
   show: {
     transition: {
@@ -31,19 +29,17 @@ const container = {
   },
 };
 
-// CARD ANIMATION
 const item: Variants = {
   hidden: { opacity: 0, y: 50 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: easeOut } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }, // 👈 string not import
 };
 
-// TYPEWRITER CONTAINER
-const titleContainer = {
+const titleContainer: Variants = {
   hidden: {},
   show: { transition: { staggerChildren: 0.02 } },
 };
 
-const letter = {
+const letter: Variants = {
   hidden: { opacity: 0 },
   show: { opacity: 1 },
 };
@@ -76,7 +72,7 @@ export default function Blog() {
         {posts.map((post) => (
           <motion.div key={post.title} variants={item} className="flex flex-col gap-4">
             {/* Image */}
-            <div className="w-full aspect-[4/3] rounded-2xl overflow-hidden">
+            <div className="w-full aspect-4/3 rounded-2xl overflow-hidden">
               <img
                 src={post.src}
                 alt={post.title}
@@ -86,7 +82,6 @@ export default function Blog() {
 
             {/* Text */}
             <div className="flex flex-col gap-2 px-1">
-              {/* TYPEWRITER TITLE */}
               <motion.h2
                 className="font-semibold text-[#2C1810] text-base leading-snug"
                 variants={titleContainer}

@@ -171,7 +171,7 @@ export default function Admission() {
             <span className="w-2 h-2 rounded-full bg-[#C97B63]" />
             <span className="text-sm text-[#C97B63] italic font-medium">How It Work</span>
           </div>
-          <div className="min-h-[8rem]">
+          <div className="min-h-32">
             <h2 className="font-jarkata text-5xl font-bold text-[#2C1810] leading-tight">
               {line1}
               {typingLine === 1 && <span className="animate-pulse text-[#C97B63]">|</span>}
@@ -213,7 +213,7 @@ export default function Admission() {
               {i < steps.length - 1 && (
                 <div
                   ref={(el) => { arrowRefs.current[i] = el; }}
-                  className="hidden lg:flex items-center justify-center w-16 flex-shrink-0 translate-y-12 opacity-0 transition-all duration-700 ease-out"
+                  className="hidden lg:flex items-center justify-center w-16 shrink-0 translate-y-12 opacity-0 transition-all duration-700 ease-out"
                   style={{
                     marginTop: "72px", // vertically centers arrow within the 176px image
                     transitionDelay: `${i * 150 + 100}ms`,

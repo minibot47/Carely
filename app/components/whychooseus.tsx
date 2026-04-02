@@ -192,7 +192,7 @@ export default function WhyChooseUs() {
           </button>
 
           {/* Bottom highlights with top border */}
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#2E2018]/80 to-transparent pb-8 px-8">
+          <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-[#2E2018]/80 to-transparent pb-8 px-8">
             <div className="grid sm:grid-cols-3 gap-6 w-[90%] m-auto border-t-[0.1px] border-white pt-12">
               {highlights.map((h, idx) => (
                 <div
@@ -201,7 +201,7 @@ export default function WhyChooseUs() {
                   className="flex items-start gap-4 translate-y-16 opacity-0 transition-all duration-700 ease-out"
                   style={{ transitionDelay: `${idx * 150}ms` }}
                 >
-                  <div className="w-12 h-12 rounded-full bg-[#C97B63]/80 flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-[#C97B63]/80 flex items-center justify-center shrink-0">
                     {h.icon}
                   </div>
                   <div>

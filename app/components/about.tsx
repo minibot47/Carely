@@ -112,7 +112,7 @@ export default function About() {
           className="min-h-[340px] lg:h-[45vh] p-8 flex flex-col gap-2 bg-[#F0EDE6] items-center justify-end rounded-[16px]
             translate-y-16 opacity-0 transition-all duration-700 ease-out"
         >
-          <div className="w-40 h-40 sm:w-44 sm:h-44 mb-4 flex-shrink-0 relative" style={{ clipPath: "url(#flower)" }}>
+          <div className="w-40 h-40 sm:w-44 sm:h-44 mb-4 shrink-0 relative" style={{ clipPath: "url(#flower)" }}>
             <img src="/images/about-img-2.jpg" alt="Nursing" className="object-cover w-full h-full" />
           </div>
           <h2 className="text-lg font-bold text-[#2C1810] text-center">24/7 Skilled Nursing Support</h2>
