@@ -1,6 +1,6 @@
 "use client";
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, Variants } from "framer-motion";
 
 const faqs = [
   {
@@ -25,27 +25,56 @@ const faqs = [
   },
 ];
 
+const LINE_1 = "Answers to common";
+const LINE_2 = "questions about our care";
+
+const container: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.15 } },
+};
+
+const item: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  show: { opacity: 1, y: 0 },
+};
+
 export default function FAQ() {
   const [open, setOpen] = useState<number | null>(null);
+  const sectionRef = useRef(null);
 
-  const text = "Answers to common questions about our care";
+  const [line1, setLine1] = useState("");
+  const [line2, setLine2] = useState("");
+  const [typingLine, setTypingLine] = useState<1 | 2 | "done">(1);
 
-  const container = {
-    hidden: {},
-    show: {
-      transition: {
-        staggerChildren: 0.15,
+  // Typewriter — fires when section enters view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+
+        let i = 0;
+        const t1 = setInterval(() => {
+          if (i < LINE_1.length) { setLine1(LINE_1.slice(0, i + 1)); i++; }
+          else {
+            clearInterval(t1);
+            setTypingLine(2);
+            let j = 0;
+            const t2 = setInterval(() => {
+              if (j < LINE_2.length) { setLine2(LINE_2.slice(0, j + 1)); j++; }
+              else { clearInterval(t2); setTypingLine("done"); }
+            }, 40);
+          }
+        }, 40);
       },
-    },
-  };
-
-  const item = {
-    hidden: { opacity: 0, y: 40 },
-    show: { opacity: 1, y: 0 },
-  };
+      { threshold: 0.2 }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <section className="py-24 bg-white">
+    <section ref={sectionRef} className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16">
 
@@ -56,27 +85,27 @@ export default function FAQ() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <p className="section-label mb-4">
-              Frequently asked questions
-            </p>
+            <div className="flex items-center justify-start gap-2 mb-4">
+              <span className="w-2 h-2 rounded-full bg-[#C97B63]" />
+              <span className="text-lg text-black font-lora font-medium">Frequently asked questions</span>
+            </div>
 
-            {/* TYPEWRITER */}
-            <h2 className="text-5xl mb-6">
-              {text.split("").map((char, i) => (
-                <motion.span
-                  key={i}
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  transition={{ delay: i * 0.03 }}
-                  viewport={{ once: true }}
-                >
-                  {char}
-                </motion.span>
-              ))}
-            </h2>
+            {/* Typewriter heading */}
+            <div className="min-h-[7rem] mb-6">
+              <h2 className="font-jakarta text-5xl text-[#2C1810] leading-tight">
+                {line1}
+                {typingLine === 1 && <span className="animate-pulse text-[#C97B63]">|</span>}
+              </h2>
+              {(typingLine === 2 || typingLine === "done") && (
+                <h2 className="font-lora italic text-5xl text-[#2C1810] leading-tight">
+                  {line2}
+                  {typingLine === 2 && <span className="animate-pulse text-[#C97B63]">|</span>}
+                </h2>
+              )}
+            </div>
 
             <p className="text-[#9C8070] leading-relaxed text-normal mb-8">
-              We know that choosing the right care for your loved one comes with many questions. That’s why we’ve gathered the most common inquiries from families
+              We know that choosing the right care for your loved one comes with many questions. That's why we've gathered the most common inquiries from families
             </p>
 
             {/* CARD */}
@@ -96,9 +125,7 @@ export default function FAQ() {
                       </svg>
                       Call Us:
                     </div>
-                    <h2 className="text-sm text-[#5C4033] pl-6">
-                      +1 (234) 567 489
-                    </h2>
+                    <h2 className="text-sm text-[#5C4033] pl-6">+1 (234) 567 489</h2>
                   </div>
                 </div>
 
@@ -111,9 +138,7 @@ export default function FAQ() {
                       </svg>
                       E-mail Us:
                     </div>
-                    <h2 className="text-sm text-[#5C4033] pl-6">
-                      support@domain.com
-                    </h2>
+                    <h2 className="text-sm text-[#5C4033] pl-6">support@domain.com</h2>
                   </div>
                 </div>
               </div>
@@ -133,24 +158,15 @@ export default function FAQ() {
                 key={i}
                 variants={item}
                 className={`rounded-xl border transition-colors ${
-                  open === i
-                    ? "border-[#C97B63] bg-[#FDF8F5]"
-                    : "border-[#EDE5DB] bg-white"
+                  open === i ? "border-[#C97B63] bg-[#FDF8F5]" : "border-[#EDE5DB] bg-white"
                 }`}
               >
                 <button
                   onClick={() => setOpen(open === i ? null : i)}
                   className="w-full text-left px-6 py-5 flex items-center justify-between gap-4"
                 >
-                  <span className="font-semibold text-[#2C1810] text-sm">
-                    {faq.q}
-                  </span>
-
-                  <span
-                    className={`text-[#C97B63] flex shrink-0 transition-transform text-lg ${
-                      open === i ? "rotate-45" : ""
-                    }`}
-                  >
+                  <span className="font-semibold text-[#2C1810] text-sm">{faq.q}</span>
+                  <span className={`text-[#C97B63] flex shrink-0 transition-transform text-lg ${open === i ? "rotate-45" : ""}`}>
                     +
                   </span>
                 </button>

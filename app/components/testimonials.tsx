@@ -1,29 +1,24 @@
 "use client";
-import { useState, useEffect } from "react";
-import { motion, useMotionValue, useTransform, animate } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
 
 const testimonials = [
   {
-    quote:
-      "After my father had a fall at home, we knew he needed more help than we could give. We were worried about the transition, but the team at [Facility Name] made it so smooth. From the first day.",
+    quote: "After my father had a fall at home, we knew he needed more help than we could give. We were worried about the transition, but the team at [Facility Name] made it so smooth. From the first day.",
     name: "Jenny Wilson",
     avatar: "/images/satisfy-client-img-1.jpg",
   },
   {
-    quote:
-      "When I moved in, I thought I was giving up my independence. But what I found was a new chapter. I've joined the painting club, made friends over tea, and even started doing yoga again.",
+    quote: "When I moved in, I thought I was giving up my independence. But what I found was a new chapter. I've joined the painting club, made friends over tea, and even started doing yoga again.",
     name: "Sophia Reynolds",
     avatar: "/images/satisfy-client-img-2.jpg",
   },
   {
-    quote:
-      "The care here is unlike anything I expected. Every staff member knows my name, my story, and what makes me smile.",
+    quote: "The care here is unlike anything I expected. Every staff member knows my name, my story, and what makes me smile.",
     name: "Robert James",
     avatar: "/images/satisfy-client-img-3.jpg",
   },
   {
-    quote:
-      "The care here is unlike anything I expected. Every staff member knows my name, my story, and what makes me smile.",
+    quote: "The care here is unlike anything I expected. Every staff member knows my name, my story, and what makes me smile.",
     name: "Robert James",
     avatar: "/images/satisfy-client-img-4.jpg",
   },
@@ -36,6 +31,9 @@ const stats = [
 ];
 
 const logos = ["Logoipsum", "Logoipsum", "Logoipsum", "Logoipsum", "Logoipsum"];
+
+const LINE_1 = "What families say about our";
+const LINE_2 = "compassionate care";
 
 const StarRating = () => (
   <div className="flex gap-1 mb-5">
@@ -53,33 +51,91 @@ const QuoteIcon = () => (
   </svg>
 );
 
-// Counter component
-const Counter = ({ value }: { value: number }) => {
-  const count = useMotionValue(0);
-  const rounded = useTransform(count, (latest) => Math.floor(latest));
+// Plain count-up counter
+function Counter({ value }: { value: number }) {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+  const started = useRef(false);
 
   useEffect(() => {
-    const controls = animate(count, value, {
-      duration: 2,
-      ease: "easeOut",
-    });
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting || started.current) return;
 
-    return controls.stop;
+        started.current = true;
+
+        let start = 0;
+        const duration = 1500; // ms
+        const startTime = performance.now();
+
+        const animate = (currentTime: number) => {
+          const progress = Math.min((currentTime - startTime) / duration, 1);
+
+          const currentValue = Math.floor(progress * value);
+          setCount(currentValue);
+
+          if (progress < 1) {
+            requestAnimationFrame(animate);
+          } else {
+            setCount(value); // ensure exact final value
+          }
+        };
+
+        requestAnimationFrame(animate);
+      },
+      { threshold: 0.3 }
+    );
+
+    if (ref.current) observer.observe(ref.current);
+
+    return () => observer.disconnect();
   }, [value]);
 
-  return <motion.span>{rounded}</motion.span>;
-};
+  return <div ref={ref}>{count}</div>;
+}
 
 export default function Testimonials() {
   const [page, setPage] = useState(0);
+  const sectionRef = useRef(null);
 
-  // AUTO SLIDE
+  // Typewriter
+  const [line1, setLine1] = useState("");
+  const [line2, setLine2] = useState("");
+  const [typingLine, setTypingLine] = useState<1 | 2 | "done">(1);
+
+  // Testimonial auto-slide
   useEffect(() => {
     const interval = setInterval(() => {
       setPage((prev) => (prev + 1) % testimonials.length);
     }, 5000);
-
     return () => clearInterval(interval);
+  }, []);
+
+  // Typewriter — fires when section enters view
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        observer.disconnect();
+
+        let i = 0;
+        const t1 = setInterval(() => {
+          if (i < LINE_1.length) { setLine1(LINE_1.slice(0, i + 1)); i++; }
+          else {
+            clearInterval(t1);
+            setTypingLine(2);
+            let j = 0;
+            const t2 = setInterval(() => {
+              if (j < LINE_2.length) { setLine2(LINE_2.slice(0, j + 1)); j++; }
+              else { clearInterval(t2); setTypingLine("done"); }
+            }, 40);
+          }
+        }, 40);
+      },
+      { threshold: 0.2 }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
   }, []);
 
   const visiblePair = [
@@ -87,34 +143,30 @@ export default function Testimonials() {
     testimonials[(page + 1) % testimonials.length],
   ];
 
-  const heading = "What families say about our compassionate care";
-
   return (
-    <section className="py-24 bg-[#47372d] rounded-[16px] mb-24">
+    <section ref={sectionRef} className="py-24 bg-[#47372d] rounded-[16px] mb-24">
       <div className="max-w-7xl mx-auto px-6">
 
         {/* HEADER */}
         <div className="text-center mb-14">
           <div className="flex items-center justify-center gap-2 mb-4">
             <span className="w-2 h-2 rounded-full bg-[#C97B63]" />
-            <span className="text-sm text-[#C97B63] italic font-medium">
-              Testimonials
-            </span>
+            <span className="text-lg text-white font-lora font-medium">Testimonials</span>
           </div>
 
-          {/* TYPEWRITER */}
-          <h2 className="font-jarkata text-4xl md:text-5xl text-white leading-tight">
-            {heading.split("").map((char, i) => (
-              <motion.span
-                key={i}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: i * 0.03 }}
-              >
-                {char}
-              </motion.span>
-            ))}
-          </h2>
+          {/* Typewriter heading */}
+          <div className="min-h-[7rem]">
+            <h2 className="font-jakarta text-4xl md:text-5xl text-white leading-tight">
+              {line1}
+              {typingLine === 1 && <span className="animate-pulse text-[#C97B63]">|</span>}
+            </h2>
+            {(typingLine === 2 || typingLine === "done") && (
+              <h2 className="font-lora italic text-4xl md:text-5xl text-white leading-tight">
+                {line2}
+                {typingLine === 2 && <span className="animate-pulse text-[#C97B63]">|</span>}
+              </h2>
+            )}
+          </div>
         </div>
 
         {/* MAIN */}
@@ -122,43 +174,32 @@ export default function Testimonials() {
 
           {/* TESTIMONIALS */}
           <div className="bg-[#3D2B1F] rounded-2xl p-8">
-            <motion.div
+            <div
               key={page}
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="grid md:grid-cols-2 gap-6"
+              className="grid md:grid-cols-2 gap-6 transition-opacity duration-500"
             >
               {visiblePair.map((t, i) => (
                 <div key={i} className="flex flex-col gap-4">
                   <StarRating />
                   <p className="text-white text-sm">"{t.quote}"</p>
-
                   <div className="flex items-center justify-between mt-4 pt-4 border-t border-[#5C4033]">
                     <div className="flex items-center gap-3">
-                      <img
-                        src={t.avatar}
-                        className="w-10 h-10 rounded-full object-cover"
-                      />
-                      <span className="text-white text-sm font-bold">
-                        {t.name}
-                      </span>
+                      <img src={t.avatar} className="w-10 h-10 rounded-full object-cover" alt={t.name} />
+                      <span className="text-white text-sm font-bold">{t.name}</span>
                     </div>
                     <QuoteIcon />
                   </div>
                 </div>
               ))}
-            </motion.div>
+            </div>
           </div>
 
           {/* STATS */}
           <div className="relative rounded-2xl overflow-hidden">
             <div className="absolute inset-0">
-              <img src="/images/testimonial-img.jpg" className="object-cover w-full h-full" />
+              <img src="/images/testimonial-img.jpg" className="object-cover w-full h-full" alt="testimonial" />
             </div>
-
             <div className="absolute inset-0 bg-black/50" />
-
             <div className="relative z-10 p-8 space-y-6">
               {stats.map((s, i) => (
                 <div key={i}>
@@ -174,33 +215,20 @@ export default function Testimonials() {
         </div>
 
         {/* BOTTOM TEXT */}
-        <motion.p
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          className="text-center text-white font-bold text-xl mt-14 mb-10"
-        >
+        <p className="text-center text-white font-bold text-xl mt-14 mb-10">
           Real Stories From Residents and Their
-          <br />
-          Families
-        </motion.p>
+          <br />Families
+        </p>
 
-        {/* LOGOS */}
+        {/* LOGOS — CSS marquee, no framer */}
         <div className="overflow-hidden">
-          <motion.div
-            className="flex gap-10"
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{
-              repeat: Infinity,
-              duration: 10,
-              ease: "linear",
-            }}
+          <div
+            className="flex gap-10 w-max animate-marquee"
           >
             {[...logos, ...logos].map((logo, i) => (
-              <div key={i} className="text-[#9C7060] whitespace-nowrap">
-                {logo}
-              </div>
+              <div key={i} className="text-[#9C7060] whitespace-nowrap">{logo}</div>
             ))}
-          </motion.div>
+          </div>
         </div>
 
       </div>

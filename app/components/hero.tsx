@@ -39,19 +39,22 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen p-5 overflow-hidden mt-2 mb-32 rounded-[16px] flex items-end">
+    <section className="relative min-h-screen pl-5 pr-5 pb-16  overflow-hidden mt-2 mb-32 rounded-[16px] flex items-end">
       {/* Background with parallax */}
       <div
         ref={bgRef}
         className="absolute inset-0 will-change-transform"
-        style={{ top: "-20%", height: "150%" }}
+        style={{ top: "-20%", height: "130%" }}
       >
         <img
           src="/images/hero-img.jpg"
           alt="Senior care"
-          className="object-cover h-full w-full"
+          className="object-contain object-center h-full w-full scale-100"
         />
         <div className="absolute inset-0 bg-linear-to-r from-[#2E2018]/10 via-[#2E2018]/20 to-transparent" />
+        
+        {/* Bottom fade blur */}
+        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black/60 to-transparent backdrop-blur-[2px] [mask-image:linear-gradient(to_top,black_60%,transparent)]" />
       </div>
 
       {/* Content */}
@@ -59,9 +62,9 @@ export default function Hero() {
         <div className="w-[80%] py-5">
 
           {/* Typewriter heading */}
-          <h1 className="font-jakarta font-semibold text-5xl md:text-5xl lg:text-5xl text-white leading-tight mb-6">
-            Trusted senior care designed with heart{" "}<br/>
-            <span className="font-lora italic font-medium text-5xl">
+          <h1 className="font-jakarta font-bold text-5xl md:text-5xl lg:text-6xl text-white leading-16 mb-8">
+            Trusted senior care designed with heart,{" "}
+            <span className="font-lora  font-thin text-6xl">
               {displayed}
               {!done && <span className="animate-pulse text-[#f3c4c4]">|</span>}
             </span>
@@ -87,7 +90,7 @@ export default function Hero() {
           >
             <Link
               href="#services"
-              className="text-center font-bold text-white bg-[#D4C0B0] px-4 py-4 rounded-[12px] flex items-center gap-3"
+              className="text-center font-bold text-white bg-[#E6A493] px-5 py-4 rounded-[12px] flex items-center gap-3"
             >
               Schedule a visit
               <svg
@@ -142,8 +145,8 @@ export default function Hero() {
                 d="M 50,50 m -35,0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0"
               />
             </defs>
-            <circle cx="50" cy="50" r="48" fill="#f3c4c4" />
-            <text fontSize="9" fill="#2C1810" fontWeight="500" letterSpacing="2.5">
+            <circle cx="50" cy="50" r="48" fill="#E6A493" />
+            <text fontSize="10" fill="#FFFFFF" fontWeight="500" letterSpacing="2.5">
               <textPath href="#footer-circle">
                 Book Appointment • Book Appointment •
               </textPath>

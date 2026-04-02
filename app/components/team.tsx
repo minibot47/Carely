@@ -106,10 +106,13 @@ export default function Team() {
 
         {/* Header */}
         <div className="w-full flex flex-col items-center justify-center mb-14">
-          <p className="text-normal text-black mb-3">Our team members</p>
-          <h2 className="text-4xl text-center w-full min-h-[6rem]">
+          <div className="flex items-center justify-center gap-2 mb-4">
+              <span className="w-2 h-2 rounded-full bg-[#C97B63]" />
+              <span className="text-lg text-black italic font-medium">Our team member</span>
+          </div>
+          <h2 className="text-center text-5xl mb-5 font-semibold w-full min-h-24">
             {line1}
-            {typingLine === 1 && <span className="animate-pulse text-[#C97B63]">|</span>}
+            {typingLine === 1 && <span className="animate-puls font-jarkata  text-[#C97B63]">|</span>}
             {(typingLine === 2 || typingLine === "done") && (
               <>
                 <br />
@@ -123,7 +126,7 @@ export default function Team() {
         </div>
 
         {/* Cards */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className=" grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {team.map((member, idx) => (
             <div
               key={member.name}
@@ -132,7 +135,7 @@ export default function Team() {
               style={{ transitionDelay: `${idx * 150}ms` }}
             >
               {/* Photo with hover social overlay */}
-              <div className="aspect-square rounded-2xl mb-4 overflow-hidden relative">
+              <div className="h-[350px] w-full rounded-2xl mb-4 overflow-hidden relative">
                 <img
                   src={member.photo}
                   alt={member.name}

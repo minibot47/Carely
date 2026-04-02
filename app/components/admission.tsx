@@ -169,7 +169,7 @@ export default function Admission() {
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-2 mb-4">
             <span className="w-2 h-2 rounded-full bg-[#C97B63]" />
-            <span className="text-sm text-[#C97B63] italic font-medium">How It Work</span>
+            <span className="text-lg text-black italic font-medium">How It Work</span>
           </div>
           <div className="min-h-32">
             <h2 className="font-jarkata text-5xl font-bold text-[#2C1810] leading-tight">
@@ -177,7 +177,7 @@ export default function Admission() {
               {typingLine === 1 && <span className="animate-pulse text-[#C97B63]">|</span>}
             </h2>
             {(typingLine === 2 || typingLine === "done") && (
-              <h2 className="font-lora italic text-5xl  text-[#2C1810] leading-tight">
+              <h2 className="font-lora text-5xl  text-[#2C1810] leading-tight">
                 {line2}
                 {typingLine === 2 && <span className="animate-pulse text-[#C97B63]">|</span>}
               </h2>
@@ -186,12 +186,12 @@ export default function Admission() {
         </div>
 
         {/* Steps row — images on top, arrows centered between them */}
-        <div className="flex items-start justify-center">
+        <div className="flex items-center justify-center">
           {steps.map((step, i) => (
             <div key={step.title} className="flex items-start">
 
               {/* Step card */}
-              <div className="flex flex-col items-center text-center w-[180px] lg:w-[220px]">
+              <div className="flex flex-col items-center text-center w-[180px] lg:w-[300px]">
                 <ShapedImage
                   shape={step.shape}
                   img={step.img}
@@ -204,8 +204,8 @@ export default function Admission() {
                   className="mt-6 px-2 translate-y-12 opacity-0 transition-all duration-700 ease-out"
                   style={{ transitionDelay: `${i * 150 + 200}ms` }}
                 >
-                  <h3 className="font-bold text-[#2C1810] text-base mb-3 leading-snug">{step.title}</h3>
-                  <p className="text-sm text-[#9C8070] leading-relaxed">{step.desc}</p>
+                  <h3 className="font-bold text-[#2C1810] text-lg mb-3 leading-snug">{step.title}</h3>
+                  <p className="text-lg text-[#9C8070] leading-relaxed">{step.desc}</p>
                 </div>
               </div>
 
@@ -213,7 +213,7 @@ export default function Admission() {
               {i < steps.length - 1 && (
                 <div
                   ref={(el) => { arrowRefs.current[i] = el; }}
-                  className="hidden lg:flex items-center justify-center w-16 shrink-0 translate-y-12 opacity-0 transition-all duration-700 ease-out"
+                  className="hidden lg:flex items-center justify-center w-14 shrink-0 translate-y-12 opacity-0 transition-all duration-700 ease-out"
                   style={{
                     marginTop: "72px", // vertically centers arrow within the 176px image
                     transitionDelay: `${i * 150 + 100}ms`,

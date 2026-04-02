@@ -16,20 +16,20 @@ export default function Navbar() {
 
   return (
     <nav className="top-0 left-0 right-0 z-50 ">
-      <div className="  h-20 flex items-center justify-between">
+      <div className="  h-25 flex items-center justify-between">
 
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2 flex-shrink-0">
           <div className=" rounded-full flex items-center justify-center flex-shrink-0">
-            <img src="/logos/logo.svg" alt="Carely logo" className="w-14 h-14 object-contain" />
+            <img src="/logos/logo.png" alt="Carely logo" className="w-13 h-13 object-contain" />
           </div>
-          <span className="font-jarkata text-2xl font-bold text-[#2C1810]">
+          <span className="font-jarkata text-4xl font-semibold text-[#2C1810]">
             Care<span className="italic font-normal">ly</span>.
           </span>
         </Link>
 
         {/* Desktop Nav — centered */}
-        <div className="hidden md:flex items-center gap-8 text-[16px] font-medium text-[#2C1810]">
+        <div className="hidden md:flex items-center gap-7 text-[16px] font-semibold text-[#2C1810]">
           {navLinks.map((item) => (
             <Link
               key={item.label}
@@ -52,7 +52,7 @@ export default function Navbar() {
         <div className="hidden md:flex items-center">
           <Link
             href="#contact"
-            className="flex items-center gap-2 bg-[#C97B63] hover:bg-[#A85F48] transition-colors text-white text-sm font-semibold px-5 py-3 rounded-[8px]"
+            className="flex items-center gap-2 bg-[#E6A493] hover:bg-[#A85F48] transition-colors text-white text-lg font-semibold px-5 py-3 rounded-[8px]"
           >
             Contact Us
             <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5" stroke="currentColor" strokeWidth="2">

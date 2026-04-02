@@ -99,7 +99,7 @@ export default function CompassionateCare() {
           <div className="w-full flex flex-col items-center justify-center">
             <div className="flex items-center gap-2 mb-5">
               <span className="w-2 h-2 rounded-full bg-[#C97B63]" />
-              <span className="text-xl text-[#C97B63] italic font-medium">Pricing Plan</span>
+              <span className="text-lg text-black italic font-medium">Pricing Plan</span>
             </div>
 
             {/* Typewriter heading */}
@@ -111,7 +111,7 @@ export default function CompassionateCare() {
                   <br />
                   <span>
                     {line2}
-                    {typingLine === 2 && <span className="animate-pulse text-[#C97B63]">|</span>}
+                    {typingLine === 2 && <span className="animate-pulse font-lora font-thin text-[#C97B63]">|</span>}
                   </span>
                 </>
               )}
@@ -120,7 +120,7 @@ export default function CompassionateCare() {
         </div>
 
         {/* Cards — staggered slide up */}
-        <div className="grid md:grid-cols-3 gap-10 max-w-[1440px]">
+        <div className="grid md:grid-cols-3 gap-5 max-w-[1440px]">
           {plans.map((plan, idx) => (
             <div
               key={plan.name}
@@ -132,10 +132,10 @@ export default function CompassionateCare() {
               }`}
               style={{ transitionDelay: `${idx * 150}ms` }}
             >
-              <p className={`text-sm font-semibold mb-1 ${plan.highlight ? "text-[#E8C5B5]" : "text-[#C97B63]"}`}>
+              <p className={`text-lg font-semibold mb-6 ${plan.highlight ? "text-[#E8C5B5]" : "text-[#C97B63]"}`}>
                 {plan.name}
               </p>
-              <p className={`text-sm mb-6 leading-relaxed ${plan.highlight ? "text-[#B09080]" : "text-[#9C8070]"}`}>
+              <p className={`text-sm mb-6 leading-relaxed ${plan.highlight ? "text-back" : "text-[#9C8070]"}`}>
                 {plan.desc}
               </p>
 
@@ -146,15 +146,15 @@ export default function CompassionateCare() {
 
               <div className="flex items-end gap-1 mb-3">
                 <span className="font-jarkata text-5xl">{plan.price}</span>
-                <span className={`text-sm pb-2 ${plan.highlight ? "text-[#B09080]" : "text-[#9C8070]"}`}>
+                <span className={`text-sm pb-2 px-1 py-3 rounded-[16px] flex items-center justify-center ${plan.highlight ? "text-[#B09080]" : "text-[#9C8070]"}`}>
                   {plan.unit}
                 </span>
               </div>
 
-              <ul className="space-y-2 mb-8 mt-5">
+              <ul className="space-y-2 mb-10 mt-5">
                 {plan.features.map((f) => (
-                  <li key={f} className={`flex items-center gap-3 text-sm ${plan.highlight ? "text-[#D4C0B0]" : "text-[#5C4033]"}`}>
-                    <span className="w-5 h-5 rounded-full bg-[#C97B63]/20 flex items-center justify-center text-[#C97B63] text-xs shrink-0">
+                  <li key={f} className={`flex items-center gap-5 text-lg ${plan.highlight ? "text-white" : "text-black"}`}>
+                    <span className="w-5 h-5 rounded-full bg-[#C97B63]/20 flex items-center justify-center text-white text-lg shrink-0">
                       ✓
                     </span>
                     {f}

@@ -140,7 +140,7 @@ export default function WhatWeDo() {
             {/* Label */}
             <div className="flex items-center gap-2 mb-5">
               <span className="w-2 h-2 rounded-full bg-[#C97B63]" />
-              <span className="text-2xl text-[#C97B63] font-lora font-medium">What we do</span>
+              <span className="text-lg text-black font-lora font-medium">What we do</span>
             </div>
 
             {/* Typewriter heading */}
@@ -177,7 +177,7 @@ export default function WhatWeDo() {
             >
               <Link
                 href="#contact"
-                className="inline-flex items-center gap-2 bg-[#C97B63] text-white px-6 py-3 rounded-xl text-sm font-semibold hover:bg-[#A85F48] transition-colors"
+                className="inline-flex items-center gap-2 bg-[#E6A493] text-white px-6 py-3 rounded-xl text-sm font-semibold hover:bg-[#A85F48] transition-colors"
               >
                 Contact Us
                 <svg viewBox="0 0 16 16" fill="none" className="w-4 h-4" stroke="currentColor" strokeWidth="1.5">

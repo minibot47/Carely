@@ -115,10 +115,10 @@ export default function WhyChooseUs() {
           <div className="w-[55%]">
             <div className="flex items-center gap-2 mb-5">
               <span className="w-2 h-2 rounded-full bg-[#C97B63]" />
-              <span className="text-2xl text-[#C97B63] font-medium font-lora">Why Choose Us</span>
+              <span className="text-lg text-black font-medium font-lora">Why Choose Us</span>
             </div>
 
-            <h2 className="font-jakarta font-semibold text-5xl text-[#2C1810] leading-tight mb-2 min-h-[7rem]">
+            <h2 className="font-jakarta font-semibold text-5xl text-[#2C1810] leading-tight mb-2 min-h-28">
               {line1}
               {typingLine === 1 && <span className="animate-pulse text-[#C97B63]">|</span>}
               {(typingLine === 2 || typingLine === "done") && (
@@ -181,9 +181,9 @@ export default function WhyChooseUs() {
             className="absolute inset-0 flex items-center justify-center group"
           >
             <div className="relative flex items-center justify-center">
-              <span className="absolute w-24 h-24 rounded-full bg-[#C97B63]/20 animate-ping" />
-              <span className="absolute w-20 h-20 rounded-full bg-[#C97B63]/25 animate-ping" style={{ animationDelay: "0.4s" }} />
-              <div className="relative w-16 h-16 rounded-full bg-[#C97B63]/60 backdrop-blur-sm flex items-center justify-center border border-white/30 group-hover:bg-[#C97B63]/80 transition-colors z-10">
+              <span className="absolute w-24 h-24 rounded-full bg-[#E6A493]/20 animate-ping" />
+              <span className="absolute w-20 h-20 rounded-full bg-[#E6A493]/25 animate-ping" style={{ animationDelay: "0.4s" }} />
+              <div className="relative w-16 h-16 rounded-full bg-[#E6A493]/60 backdrop-blur-sm flex items-center justify-center border border-white/30 group-hover:bg-[#C97B63]/80 transition-colors z-10">
                 <svg viewBox="0 0 24 24" fill="white" className="w-6 h-6 ml-1">
                   <path d="M5 3l14 9-14 9V3z" />
                 </svg>
@@ -192,8 +192,8 @@ export default function WhyChooseUs() {
           </button>
 
           {/* Bottom highlights with top border */}
-          <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-[#2E2018]/80 to-transparent pb-8 px-8">
-            <div className="grid sm:grid-cols-3 gap-6 w-[90%] m-auto border-t-[0.1px] border-white pt-12">
+          <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-[#2E2018]/80 to-transparent pb-16 px-8">
+            <div className="grid sm:grid-cols-3 gap-6 w-[97%] m-auto border-t-[0.1px] border-[#e8e8e88b] pt-8">
               {highlights.map((h, idx) => (
                 <div
                   key={h.title}
@@ -205,8 +205,8 @@ export default function WhyChooseUs() {
                     {h.icon}
                   </div>
                   <div>
-                    <h4 className="font-bold text-white text-lg mb-1">{h.title}</h4>
-                    <p className="text-white/70 text-sm leading-relaxed">{h.desc}</p>
+                    <h4 className="font-bold text-white text-2xl mb-1">{h.title}</h4>
+                    <p className="text-white text-lg font-semibold leading-relaxed">{h.desc}</p>
                   </div>
                 </div>
               ))}

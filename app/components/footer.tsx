@@ -14,7 +14,7 @@ const services = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#3D2B1F] h-[95vh] rounded-2xl overflow-hidden p-10">
+    <footer className="bg-[#3D2B1F] h-[90vh] rounded-2xl overflow-hidden p-10">
       <div className="max-w-[1440px] mx-auto py-12 flex flex-col gap-10 h-full ">
 
         {/* Top — heading + spinning badge */}
@@ -26,7 +26,7 @@ export default function Footer() {
           </h2>
 
           {/* Spinning badge */}
-          <div className="relative w-28 h-28 shrink-0 hidden md:flex items-center justify-center">
+          <div className="relative w-30 h-30 shrink-0 hidden md:flex items-center justify-center">
             <svg
               viewBox="0 0 100 100"
               className="w-full h-full animate-spin"
@@ -38,16 +38,16 @@ export default function Footer() {
                   d="M 50,50 m -35,0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0"
                 />
               </defs>
-              <circle cx="50" cy="50" r="48" fill="#E8C5B5" />
-              <text fontSize="9" fill="#2C1810" fontWeight="500" letterSpacing="2.5">
+              <circle cx="50" cy="50" r="48" fill="#E6A493" />
+              <text fontSize="9" fill="#ffffff" fontWeight="500" letterSpacing="2.5">
                 <textPath href="#footer-circle">
                   Book Appointment • Book Appointment •
                 </textPath>
               </text>
             </svg>
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-10 h-10 rounded-full bg-[#C97B63] flex items-center justify-center">
-                <MapPin size={18} color="white" />
+              <div className="w-10 h-10 rounded-full bg-[#E6A493] flex items-center justify-center">
+                <img src='/logos/logo.svg'/>
               </div>
             </div>
           </div>
@@ -59,10 +59,10 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-full bg-[#C97B63]/30 flex items-center justify-center shrink-0">
+              <div className="w-12 h-12 rounded-full bg-[#C97B63]/30 flex items-center justify-center shrink-0">
                 <img src="/logos/Logo.png" alt="logo"/>
               </div>
-              <span className="font-jarkata text-5xl text-white font-bold">
+              <span className="font-jarkata text-4xl text-white font-semibold">
                 Care<span className="font-light italic">ly</span>.
               </span>
             </div>

@@ -157,11 +157,11 @@ useEffect(() => {
             {/* Label */}
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#C97B63]" />
-              <span className="text-2xl text-[#C97B63] font-medium font-lora">Our fun facts</span>
+              <span className="text-lg text-white font-medium font-lora">Our fun facts</span>
             </div>
 
             {/* Typewriter heading */}
-            <div className="min-h-40">
+            <div className="min-h-25">
               <h2 className="font-jarkata text-5xl text-white leading-tight">
                 {line1}
                 {typingLine === 1 && <span className="animate-pulse text-[#C97B63]">|</span>}
@@ -173,7 +173,7 @@ useEffect(() => {
                   {(typingLine === 3 || typingLine === "done") && (
                     <span className="font-lora">
                       {" "}{line3}
-                      {typingLine === 3 && <span className="animate-pulse text-[#C97B63]">|</span>}
+                      {typingLine === 3 && <span className="animate-pulse text-white]">|</span>}
                     </span>
                   )}
                 </h2>
@@ -185,7 +185,7 @@ useEffect(() => {
               ref={bodyRef}
               className="translate-y-16 opacity-0 transition-all duration-700 ease-out"
             >
-              <p className="text-normal text-[#B09080] leading-relaxed w-full">
+              <p className="text-normal text-white leading-relaxed w-full">
                 Every number at [Your Facility Name] tells a story — of care, connection,
                 and the meaningful lives we've touched. From happy residents and compassionate
                 staff to meals served and memories made,
@@ -237,7 +237,7 @@ useEffect(() => {
                         <path d="M3 8l3.5 3.5L13 5" stroke="#C97B63" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     </span>
-                    <span className="text-lg text-[#D4C0B0]">{r}</span>
+                    <span className="text-lg text-white">{r}</span>
                   </div>
                 ))}
               </div>
@@ -248,8 +248,8 @@ useEffect(() => {
                   <defs>
                     <path id="footer-circle" d="M 50,50 m -35,0 a 35,35 0 1,1 70,0 a 35,35 0 1,1 -70,0" />
                   </defs>
-                  <circle cx="50" cy="50" r="48" fill="#E8C5B5" />
-                  <text fontSize="9" fill="#2C1810" fontWeight="500" letterSpacing="2.5">
+                  <circle cx="50" cy="50" r="48" fill="#E6A493" />
+                  <text fontSize="10" fill="#FFFFFF" fontWeight="500" letterSpacing="2.5">
                     <textPath href="#footer-circle">
                       Book Appointment • Book Appointment •
                     </textPath>
