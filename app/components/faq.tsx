@@ -87,17 +87,17 @@ export default function FAQ() {
           >
             <div className="flex items-center justify-start gap-2 mb-4">
               <span className="w-2 h-2 rounded-full bg-[#C97B63]" />
-              <span className="text-lg text-black font-lora font-medium">Frequently asked questions</span>
+              <span className="text-lg text-black font-lora italic font-medium">Frequently asked questions</span>
             </div>
 
             {/* Typewriter heading */}
             <div className="min-h-[7rem] mb-6">
-              <h2 className="font-jakarta text-5xl text-[#2C1810] leading-tight">
+              <h2 className="font-jakarta text-5xl text-[#2C1810] font-semibold leading-tight">
                 {line1}
                 {typingLine === 1 && <span className="animate-pulse text-[#C97B63]">|</span>}
               </h2>
               {(typingLine === 2 || typingLine === "done") && (
-                <h2 className="font-lora italic text-5xl text-[#2C1810] leading-tight">
+                <h2 className="font-lora italic  text-5xl text-[#2C1810] leading-tight">
                   {line2}
                   {typingLine === 2 && <span className="animate-pulse text-[#C97B63]">|</span>}
                 </h2>
@@ -109,15 +109,15 @@ export default function FAQ() {
             </p>
 
             {/* CARD */}
-            <div className="bg-[#F0EDE6] w-[70%] h-fit rounded-2xl overflow-hidden shadow-sm">
-              <div className="bg-[#2C1810] px-6 py-4">
+            <div className="bg-[#F0EDE6] w-full sm:w-[70%] h-fit rounded-2xl overflow-hidden shadow-sm">
+              <div className="bg-[#2C1810] px-6 py-4 flex items-center justify-center">
                 <h2 className="text-white font-bold text-base">
                   Thinking About Elder Care? Let's Talk.
                 </h2>
               </div>
 
               <div className="px-6 py-5 flex w-full items-center">
-                <div className="w-[40%] border-r border-[#D4C0B0]">
+                <div className="w-full sm:w-[45%] border-r border-[#D4C0B0]">
                   <div className="px-2 py-1 flex flex-col gap-1">
                     <div className="flex items-center gap-2 font-bold text-sm text-[#2C1810]">
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-4 h-4">
@@ -125,11 +125,11 @@ export default function FAQ() {
                       </svg>
                       Call Us:
                     </div>
-                    <h2 className="text-sm text-[#5C4033] pl-6">+1 (234) 567 489</h2>
+                    <h2 className="text-sm text-[#5C4033] ">+1 (234) 567 489</h2>
                   </div>
                 </div>
 
-                <div className="w-1/2">
+                <div className="w-[55%]">
                   <div className="px-5 py-1 flex flex-col gap-1">
                     <div className="flex items-center gap-2 font-bold text-sm text-[#2C1810]">
                       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} className="w-4 h-4">
@@ -138,7 +138,7 @@ export default function FAQ() {
                       </svg>
                       E-mail Us:
                     </div>
-                    <h2 className="text-sm text-[#5C4033] pl-6">support@domain.com</h2>
+                    <h2 className="text-sm text-[#5C4033] ">support@domain.com</h2>
                   </div>
                 </div>
               </div>
@@ -147,7 +147,7 @@ export default function FAQ() {
 
           {/* RIGHT */}
           <motion.div
-            className="space-y-3"
+            className="space-y-8"
             variants={container}
             initial="hidden"
             whileInView="show"
@@ -163,9 +163,9 @@ export default function FAQ() {
               >
                 <button
                   onClick={() => setOpen(open === i ? null : i)}
-                  className="w-full text-left px-6 py-5 flex items-center justify-between gap-4"
+                  className="w-full text-left px-6 py-4 flex items-center justify-between gap-4"
                 >
-                  <span className="font-semibold text-[#2C1810] text-sm">{faq.q}</span>
+                  <span className="font-semibold text-[#2C1810] text-lg">{faq.q}</span>
                   <span className={`text-[#C97B63] flex shrink-0 transition-transform text-lg ${open === i ? "rotate-45" : ""}`}>
                     +
                   </span>

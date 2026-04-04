@@ -148,8 +148,8 @@ useEffect(() => {
   }, [statsFired]);
 
   return (
-    <section ref={sectionRef} className="bg-[#3D2B1F] py-20 rounded-[16px]">
-      <div className="max-w-[1440px] mx-auto px-12">
+    <section ref={sectionRef} className="bg-[#333333] py-20 rounded-[16px]">
+      <div className="max-w-[1440px] mx-auto px-8">
         <div className="grid lg:grid-cols-2 gap-10 items-start">
 
           {/* ── Left column ── */}
@@ -157,7 +157,7 @@ useEffect(() => {
             {/* Label */}
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#C97B63]" />
-              <span className="text-lg text-white font-medium font-lora">Our fun facts</span>
+              <span className="text-lg text-white font-medium font-lora italic italic">Our fun facts</span>
             </div>
 
             {/* Typewriter heading */}
@@ -171,7 +171,7 @@ useEffect(() => {
                   {line2}
                   {typingLine === 2 && <span className="animate-pulse text-[#C97B63]">|</span>}
                   {(typingLine === 3 || typingLine === "done") && (
-                    <span className="font-lora">
+                    <span className="font-lora italic italic">
                       {" "}{line3}
                       {typingLine === 3 && <span className="animate-pulse text-white]">|</span>}
                     </span>
@@ -232,9 +232,9 @@ useEffect(() => {
                     className="flex items-center gap-3 translate-y-16 opacity-0 transition-all duration-700 ease-out"
                     style={{ transitionDelay: `${idx * 120}ms` }}
                   >
-                    <span className="w-5 h-5 rounded-full bg-[#C97B63]/20 flex items-center justify-center shrink-0">
-                      <svg viewBox="0 0 16 16" fill="none" className="w-3 h-3">
-                        <path d="M3 8l3.5 3.5L13 5" stroke="#C97B63" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    <span className="w-5 h-5 rounded-full bg-[#E6A493] flex items-center justify-center shrink-0">
+                      <svg viewBox="0 0 16 16" fill="none" className="w-4 h-3">
+                        <path d="M3 8l3.5 3.5L13 5" stroke="#000000" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     </span>
                     <span className="text-lg text-white">{r}</span>

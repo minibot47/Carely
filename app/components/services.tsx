@@ -125,30 +125,30 @@ export default function Services() {
 
   return (
     <section id="services" ref={sectionRef} className="py-24 bg-[#F0EDE6] rounded-[16px]">
-      <div className="max-w-[1440px] mx-auto px-6">
+      <div className="max-w-[1440px] mx-auto px-5">
 
         {/* Header */}
         <div className="text-center mb-14">
           <div className="flex items-center justify-center gap-2 mb-4">
             <span className="w-2 h-2 rounded-full bg-[#C97B63] inline-block" />
-            <span className="text-lg font-lora text-black font-medium">Our services</span>
+            <span className="text-lg font-lora italic text-black font-medium">Our services</span>
           </div>
 
           {/* Line 1 — jakarta bold */}
-          <h2 className="font-jakarta font-semibold text-5xl text-[#2C1810] leading-tight min-h-[3.5rem]">
+          <h2 className="font-jakarta font-bold text-5xl text-[#2C1810] leading-tight min-h-14">
             {line1}
             {typingLine === 1 && <span className="animate-pulse text-[#C97B63]">|</span>}
           </h2>
 
           {/* Line 2 — garamond italic, only appears after line 1 is done */}
-          <h2 className="font-lora font-thin text-5xl text-[#2C1810] leading-tight mt-1 min-h-14">
+          <h2 className="font-lora italic font-thin text-5xl text-[#2C1810] leading-tight mt-1 min-h-14">
             {line2}
             {typingLine === 2 && <span className="animate-pulse text-[#C97B63]">|</span>}
           </h2>
         </div>
 
         {/* Cards */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10 min-h-[400px]  px-10 w-full">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-10 min-h-[400px]  w-full">
           {services.map((s, idx) => (
             <div
               key={s.title}

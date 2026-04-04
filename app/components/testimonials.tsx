@@ -13,14 +13,24 @@ const testimonials = [
     avatar: "/images/satisfy-client-img-2.jpg",
   },
   {
-    quote: "The care here is unlike anything I expected. Every staff member knows my name, my story, and what makes me smile.",
+    quote: "The care here is unlike anything I expected. Every staff member knows my name, my story, and what makes me smile. I feel seen every single day.",
     name: "Robert James",
     avatar: "/images/satisfy-client-img-3.jpg",
   },
   {
-    quote: "The care here is unlike anything I expected. Every staff member knows my name, my story, and what makes me smile.",
-    name: "Robert James",
+    quote: "Moving my mom here was one of the hardest decisions I've ever made. But seeing her laugh and thrive every time I visit makes me know it was the right one.",
+    name: "Michael Carter",
     avatar: "/images/satisfy-client-img-4.jpg",
+  },
+  {
+    quote: "The activities, the food, the kindness — everything here feels intentional. My husband has never been happier, and that gives our whole family peace of mind.",
+    name: "Linda Forsythe",
+    avatar: "/images/satisfy-client-img-1.jpg",
+  },
+  {
+    quote: "I was skeptical at first, but the staff proved me wrong within the first week. They genuinely care, and it shows in every little interaction.",
+    name: "Patricia Moore",
+    avatar: "/images/satisfy-client-img-2.jpg",
   },
 ];
 
@@ -30,7 +40,14 @@ const stats = [
   { value: 200, label: "Activities Hosted Monthly" },
 ];
 
-const logos = ["Logoipsum", "Logoipsum", "Logoipsum", "Logoipsum", "Logoipsum"];
+const logos = [
+  { icon: "/logos/logo-1.svg", name: "" },
+  { icon: "/logos/logo-2.svg", name: "" },
+  { icon: "/logos/logo-3.svg", name: "" },
+  { icon: "/logos/logo-4.svg", name: "" },
+  { icon: "/logos/logo-5.svg", name: "" },
+  { icon: "/logos/logo-6.svg", name: "" },
+];
 
 const LINE_1 = "What families say about our";
 const LINE_2 = "compassionate care";
@@ -51,7 +68,6 @@ const QuoteIcon = () => (
   </svg>
 );
 
-// Plain count-up counter
 function Counter({ value }: { value: number }) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
@@ -61,33 +77,20 @@ function Counter({ value }: { value: number }) {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting || started.current) return;
-
         started.current = true;
-
-        let start = 0;
-        const duration = 1500; // ms
+        const duration = 1500;
         const startTime = performance.now();
-
         const animate = (currentTime: number) => {
           const progress = Math.min((currentTime - startTime) / duration, 1);
-
-          const currentValue = Math.floor(progress * value);
-          setCount(currentValue);
-
-          if (progress < 1) {
-            requestAnimationFrame(animate);
-          } else {
-            setCount(value); // ensure exact final value
-          }
+          setCount(Math.floor(progress * value));
+          if (progress < 1) requestAnimationFrame(animate);
+          else setCount(value);
         };
-
         requestAnimationFrame(animate);
       },
       { threshold: 0.3 }
     );
-
     if (ref.current) observer.observe(ref.current);
-
     return () => observer.disconnect();
   }, [value]);
 
@@ -96,28 +99,42 @@ function Counter({ value }: { value: number }) {
 
 export default function Testimonials() {
   const [page, setPage] = useState(0);
+  const [logoPage, setLogoPage] = useState(0);
+  const [fadeIn, setFadeIn] = useState(true);
+  const [logoFadeIn, setLogoFadeIn] = useState(true);
   const sectionRef = useRef(null);
 
-  // Typewriter
   const [line1, setLine1] = useState("");
   const [line2, setLine2] = useState("");
   const [typingLine, setTypingLine] = useState<1 | 2 | "done">(1);
 
-  // Testimonial auto-slide
   useEffect(() => {
     const interval = setInterval(() => {
-      setPage((prev) => (prev + 1) % testimonials.length);
+      setFadeIn(false);
+      setTimeout(() => {
+        setPage((prev) => (prev + 2) % testimonials.length);
+        setFadeIn(true);
+      }, 300);
     }, 5000);
     return () => clearInterval(interval);
   }, []);
 
-  // Typewriter — fires when section enters view
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLogoFadeIn(false);
+      setTimeout(() => {
+        setLogoPage((prev) => (prev + 1) % logos.length);
+        setLogoFadeIn(true);
+      }, 300);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
+
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (!entry.isIntersecting) return;
         observer.disconnect();
-
         let i = 0;
         const t1 = setInterval(() => {
           if (i < LINE_1.length) { setLine1(LINE_1.slice(0, i + 1)); i++; }
@@ -143,6 +160,9 @@ export default function Testimonials() {
     testimonials[(page + 1) % testimonials.length],
   ];
 
+  const totalDots = testimonials.length / 2;
+  const activeDot = page / 2;
+
   return (
     <section ref={sectionRef} className="py-24 bg-[#47372d] rounded-[16px] mb-24">
       <div className="max-w-7xl mx-auto px-6">
@@ -151,11 +171,9 @@ export default function Testimonials() {
         <div className="text-center mb-14">
           <div className="flex items-center justify-center gap-2 mb-4">
             <span className="w-2 h-2 rounded-full bg-[#C97B63]" />
-            <span className="text-lg text-white font-lora font-medium">Testimonials</span>
+            <span className="text-lg text-white font-lora italic font-medium">Testimonials</span>
           </div>
-
-          {/* Typewriter heading */}
-          <div className="min-h-[7rem]">
+          <div className="min-h-[5rem] lg:min-h-[7rem]">
             <h2 className="font-jakarta text-4xl md:text-5xl text-white leading-tight">
               {line1}
               {typingLine === 1 && <span className="animate-pulse text-[#C97B63]">|</span>}
@@ -169,44 +187,65 @@ export default function Testimonials() {
           </div>
         </div>
 
-        {/* MAIN */}
-        <div className="grid lg:grid-cols-[1fr_380px] gap-6">
+        {/* MAIN GRID */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_380px] gap-6 lg:gap-10">
 
           {/* TESTIMONIALS */}
-          <div className="bg-[#3D2B1F] rounded-2xl p-8">
+          <div className="bg-[#757575] rounded-2xl p-8 flex flex-col">
             <div
-              key={page}
-              className="grid md:grid-cols-2 gap-6 transition-opacity duration-500"
+              className="grid grid-cols-1 sm:grid-cols-2 gap-6 items-stretch flex-1"
+              style={{
+                opacity: fadeIn ? 1 : 0,
+                transition: "opacity 0.3s ease",
+              }}
             >
               {visiblePair.map((t, i) => (
-                <div key={i} className="flex flex-col gap-4">
-                  <StarRating />
-                  <p className="text-white text-sm">"{t.quote}"</p>
-                  <div className="flex items-center justify-between mt-4 pt-4 border-t border-[#5C4033]">
+                <div key={i} className="flex flex-col justify-between h-full min-h-[220px]">
+                  <div>
+                    <StarRating />
+                    <p className="text-white text-lg leading-relaxed">"{t.quote}"</p>
+                  </div>
+                  <div className="flex items-center justify-between mt-1 pt-4 border-t border-[#5C4033]">
                     <div className="flex items-center gap-3">
                       <img src={t.avatar} className="w-10 h-10 rounded-full object-cover" alt={t.name} />
                       <span className="text-white text-sm font-bold">{t.name}</span>
                     </div>
-                    <QuoteIcon />
+                    <img src='/icons/quote.svg' alt="quote" />
                   </div>
                 </div>
+              ))}
+            </div>
+
+            {/* DOTS */}
+            <div className="flex justify-center gap-2 mt-6">
+              {[...Array(totalDots)].map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setPage(i * 2)}
+                  className={`rounded-full transition-all duration-300 ${
+                    i === activeDot
+                      ? "w-5 h-2.5 bg-[#C97B63]"
+                      : "w-2.5 h-2.5 bg-[#5C4033]"
+                  }`}
+                />
               ))}
             </div>
           </div>
 
           {/* STATS */}
-          <div className="relative rounded-2xl overflow-hidden">
+          <div className="relative rounded-2xl overflow-hidden min-h-[320px] lg:min-h-0">
             <div className="absolute inset-0">
               <img src="/images/testimonial-img.jpg" className="object-cover w-full h-full" alt="testimonial" />
             </div>
             <div className="absolute inset-0 bg-black/50" />
             <div className="relative z-10 p-8 space-y-6">
               {stats.map((s, i) => (
-                <div key={i}>
-                  <div className="text-5xl text-white font-bold">
+                <div key={i} className="border-b-[0.1px] border-gray-100/10">
+                  <div className="text-5xl text-white font-bold flex items-end gap-0.5">
                     <Counter value={s.value} />
+                    <span>+</span>
                   </div>
-                  <div className="text-sm text-[#D4C0B0]">{s.label}</div>
+                  <div className="text-lg text-white font-bold mt-1">{s.label}</div>
                 </div>
               ))}
             </div>
@@ -215,19 +254,53 @@ export default function Testimonials() {
         </div>
 
         {/* BOTTOM TEXT */}
-        <p className="text-center text-white font-bold text-xl mt-14 mb-10">
+        <p className="text-center text-white font-bold text-base lg:text-xl mt-10 lg:mt-14 mb-8 lg:mb-10">
           Real Stories From Residents and Their
           <br />Families
         </p>
 
-        {/* LOGOS — CSS marquee, no framer */}
-        <div className="overflow-hidden">
-          <div
-            className="flex gap-10 w-max animate-marquee"
-          >
-            {[...logos, ...logos].map((logo, i) => (
-              <div key={i} className="text-[#9C7060] whitespace-nowrap">{logo}</div>
-            ))}
+        {/* LOGOS */}
+        <div
+          style={{
+            opacity: logoFadeIn ? 1 : 0,
+            transition: "opacity 0.3s ease",
+          }}
+        >
+          {/* Mobile — 3 logos */}
+          <div className="grid grid-cols-3 gap-6 sm:hidden">
+            {[...Array(3)].map((_, i) => {
+              const logo = logos[(logoPage + i) % logos.length];
+              return (
+                <div key={i} className="flex items-center justify-center">
+                  <img src={logo.icon} alt="logo" className="h-8 w-auto object-contain" />
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Tablet — 4 logos */}
+          <div className="hidden sm:flex lg:hidden justify-center gap-8">
+            {[...Array(4)].map((_, i) => {
+              const logo = logos[(logoPage + i) % logos.length];
+              return (
+                <div key={i} className="flex items-center justify-center">
+                  <img src={logo.icon} alt="logo" className="h-10 w-auto object-contain" />
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Desktop — all 6 logos */}
+          <div className="hidden lg:flex gap-10 justify-center">
+            {[...Array(6)].map((_, i) => {
+              const logo = logos[(logoPage + i) % logos.length];
+              return (
+                <div key={i} className="flex items-center gap-2">
+                  <img src={logo.icon} alt="logo" className="h-14 w-auto object-contain" />
+                  {logo.name && <span className="font-semibold text-[#9C7060]">{logo.name}</span>}
+                </div>
+              );
+            })}
           </div>
         </div>
 

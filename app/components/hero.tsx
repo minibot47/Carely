@@ -39,32 +39,32 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="relative min-h-screen pl-5 pr-5 pb-16 2xl:px-20 2xl:py-10  overflow-hidden mt-2 mb-32 rounded-[16px] flex items-end">
+    <section className="relative min-h-screen px-5 pb-28 md:pb-20 2xl:px-32 2xl:py-16 overflow-hidden mt-2 mb-32 rounded-[16px] flex items-end">
       {/* Background with parallax */}
       <div
         ref={bgRef}
         className="absolute inset-0 will-change-transform"
-        style={{ top: "-20%", height: "130%" }}
+        style={{ top: "-10%", height: "120%" }}
       >
         <img
           src="/images/hero-img.jpg"
           alt="Senior care"
-          className="object-contain object-start h-full w-full scale-120"
+          className="object-cover object-top h-full w-full scale-100"
         />
         <div className="absolute inset-0 bg-linear-to-r from-[#2E2018]/10 via-[#2E2018]/20 to-transparent" />
-        
-        {/* Bottom fade blur */}
-        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black/60 to-transparent backdrop-blur-[2px] [mask-image:linear-gradient(to_top,black_60%,transparent)]" />
       </div>
+
+      {/* Bottom fade blur */}
+      <div className="absolute bottom-0 left-0 right-0 h-62 bg-linear-to-t from-[#E6A493]/75 to-transparent backdrop-blur-[2px] [mask-image:linear-gradient(to_top,black_60%,transparent)]" />
 
       {/* Content */}
       <div className="relative z-10 w-full flex items-center h-full justify-between">
-        <div className="w-[80%] py-5">
+        <div className="w-full md:w-[80%] py-2">
 
           {/* Typewriter heading */}
-          <h1 className="font-jakarta font-bold text-5xl md:text-5xl lg:text-6xl text-white leading-16 mb-8">
-            Trusted senior care designed with heart,{" "}
-            <span className="font-lora  font-thin text-6xl">
+          <h1 className="font-jakarta font-bold text-3xl md:text-5xl lg:text-6xl text-white leading-tight mb-6 md:mb-10">
+            Trusted elderly care designed with heart,{" "}
+            <span className="font-lora italic font-medium text-4xl md:text-6xl">
               {displayed}
               {!done && <span className="animate-pulse text-[#f3c4c4]">|</span>}
             </span>
@@ -72,7 +72,7 @@ export default function Hero() {
 
           {/* Paragraph fades in after typing finishes */}
           <p
-            className={`text-white text-lg leading-relaxed mb-8 transition-opacity duration-700 ${
+            className={`text-white text-base md:text-lg font-medium mb-8 transition-opacity duration-700 ${
               done ? "opacity-100" : "opacity-0"
             }`}
           >
@@ -82,15 +82,15 @@ export default function Hero() {
             team,
           </p>
 
-          {/* Trust badges — also fade in with the paragraph */}
+          {/* Trust badges */}
           <div
-            className={`flex items-center gap-6 transition-opacity duration-700 delay-300 ${
+            className={`flex flex-wrap items-center gap-4 md:gap-8 transition-opacity mt-2 duration-700 delay-300 ${
               done ? "opacity-100" : "opacity-0"
             }`}
           >
             <Link
               href="#services"
-              className="text-center font-bold text-white bg-[#E6A493] px-5 py-4 rounded-[12px] flex items-center gap-3"
+              className="text-center font-bold text-white bg-[#E6A493] px-5 py-3 rounded-[12px] flex items-center gap-1"
             >
               Schedule a visit
               <svg
@@ -118,13 +118,13 @@ export default function Hero() {
                   key={i}
                   src={src}
                   alt={`Customer ${i + 1}`}
-                  className="w-12 h-12 rounded-full border-2 border-white object-cover"
+                  className="w-10 h-10 rounded-full object-cover"
                 />
               ))}
             </div>
             <div>
-              <p className="text-white text-lg font-semibold">
-                <span className="text-[#D4C0B0] text-xl italic">5k+</span> Our
+              <p className="text-white text-sm font-semibold mt-4">
+                <span className="text-[#D4C0B0] text-lg font-jakarta font-semibold">5k+</span> Our
                 Customers <br />
                 Satisfactions
               </p>
@@ -136,8 +136,8 @@ export default function Hero() {
         <div className="relative w-50 text-white h-50 flex-shrink-0 hidden md:flex items-center justify-center">
           <svg
             viewBox="0 0 100 100"
-            className="w-full h-full animate-spin"
-            style={{ animationDuration: "10s" }}
+            className="w-full h-full"
+            style={{ animation: "spin 10s linear infinite" }}
           >
             <defs>
               <path
@@ -153,7 +153,7 @@ export default function Hero() {
             </text>
           </svg>
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-16 h-16 rounded-full bg-[#f3c4c4] text-white flex items-center justify-center">
+            <div className="w-20 h-20 rounded-full bg-[#f3c4c4] text-white flex items-center justify-center">
               <img src="/logos/logo.svg" alt="LOGO" />
             </div>
           </div>

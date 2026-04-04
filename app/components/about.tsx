@@ -52,7 +52,7 @@ export default function About() {
   }, []);
 
   return (
-    <div className="w-full h-fit mb-32 px-4">
+    <div className="w-full h-fit mb-32 ">
 
       {/* SVG clip path definitions */}
       <svg width="0" height="0" className="absolute">
@@ -73,16 +73,16 @@ export default function About() {
       <div className="flex flex-col items-center justify-center mb-12 px-4">
         <div className="flex items-center gap-2 mb-4">
           <span className="w-2 h-2 rounded-full bg-[#C97B63]" />
-          <span className="text-lg text-black font-lora font-medium">About us</span>
+          <span className="text-lg text-black font-lora italic font-medium">About us</span>
         </div>
 
                 {/* Heading — clean typewriter, no ghost */}
-        <h1 className="font-semibold font-jakarta text-center text-3xl sm:text-5xl leading-tight w-[90%]">
+        <h1 className="font-semibold font-jakarta text-center text-3xl sm:text-5xl leading-tight w-full">
           <span className="text-[#2C1810]">
             {displayed}
             {!done && <span className="animate-pulse text-[#C97B63]">|</span>}
             {done && (
-              <span className="font-normal font-lora text-black">
+              <span className="font-normal font-lora italic text-black">
                 {HEADING_SUFFIX}
               </span>
             )}
@@ -104,7 +104,7 @@ export default function About() {
       </div>
 
       {/* Cards */}
-      <div className="w-[90%] max-w-[1440px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="w-full max-w-[1440px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
         {/* Card 1 */}
         <div

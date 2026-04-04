@@ -99,7 +99,7 @@ export default function CompassionateCare() {
           <div className="w-full flex flex-col items-center justify-center">
             <div className="flex items-center gap-2 mb-5">
               <span className="w-2 h-2 rounded-full bg-[#C97B63]" />
-              <span className="text-lg text-black italic font-medium">Pricing Plan</span>
+              <span className="text-lg text-black font-lora italic font-medium">Pricing Plan</span>
             </div>
 
             {/* Typewriter heading */}
@@ -112,7 +112,7 @@ export default function CompassionateCare() {
               {line2 && (
                 <>
                   <br />
-                  <span className="font-lora font-thin">
+                  <span className="font-lora italic italic italic font-thin">
                     {line2}
                     {typingLine === 2 && (
                       <span className="animate-pulse text-[#C97B63]">|</span>
@@ -125,7 +125,7 @@ export default function CompassionateCare() {
         </div>
 
         {/* Cards — staggered slide up */}
-        <div className="grid md:grid-cols-3 gap-5 max-w-[1440px]">
+        <div className="grid md:grid-cols-3 gap-8 max-w-[1440px]">
           {plans.map((plan, idx) => (
             <div
               key={plan.name}
@@ -159,7 +159,7 @@ export default function CompassionateCare() {
               <ul className="space-y-2 mb-10 mt-5">
                 {plan.features.map((f) => (
                   <li key={f} className={`flex items-center gap-5 text-lg ${plan.highlight ? "text-white" : "text-black"}`}>
-                    <span className="w-5 h-5 rounded-full bg-[#C97B63]/20 flex items-center justify-center text-white text-lg shrink-0">
+                    <span className="w-6 h-6 rounded-full bg-[#C97B63]/20 flex items-center justify-center text-white text-lg shrink-0">
                       ✓
                     </span>
                     {f}
@@ -169,13 +169,13 @@ export default function CompassionateCare() {
 
               <a
                 href="#admissions"
-                className={`block text-center py-3 rounded-full text-sm font-semibold transition-colors ${
+                className={`block text-center py-3 rounded-[8px] text-lg font-semibold transition-colors ${
                   plan.highlight
-                    ? "bg-[#C97B63] text-white hover:bg-[#A85F48]"
-                    : "border border-[#C97B63] text-[#C97B63] hover:bg-[#C97B63] hover:text-white"
+                    ? "bg-white text-black hover:bg-[#A85F48]"
+                    : "bg-[#E6A493]  text-white hover:bg-[#C97B63] hover:text-white"
                 }`}
               >
-                Get started
+                Get started with Plan
               </a>
             </div>
           ))}

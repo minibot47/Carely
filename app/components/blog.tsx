@@ -51,13 +51,13 @@ export default function Blog() {
       <div className="flex flex-col items-center justify-center mb-12">
         <div className="flex items-center gap-2 mb-4">
           <span className="w-2 h-2 rounded-full bg-[#C97B63]" />
-          <span className="text-lg text-black font-medium">Our blog</span>
+          <span className="text-lg text-black font-lora italic font-medium">Our blog</span>
         </div>
 
         <h1 className="font-jarkata font-semibold text-center text-3xl sm:text-4xl lg:text-5xl text-[#2C1810] leading-tight">
           Explore articles that nurture
           <br />
-          <span className="font-lora font-thin italic"> educate, and inspire</span>
+          <span className="font-lora italic font-thin "> educate, and inspire</span>
         </h1>
       </div>
 
@@ -83,7 +83,7 @@ export default function Blog() {
             {/* Text */}
             <div className="flex flex-col gap-2 px-1">
               <motion.h2
-                className="font-semibold text-[#2C1810] text-base leading-snug"
+                className="font-bold text-[#2C1810] text-xl leading-snug"
                 variants={titleContainer}
                 initial="hidden"
                 whileInView="show"
@@ -98,7 +98,7 @@ export default function Blog() {
 
               <Link
                 href={post.href}
-                className="text-sm font-semibold text-black hover:text-[#A85F48] transition-colors flex items-center gap-1"
+                className="text-lg font-semibold text-black hover:text-[#A85F48] transition-colors flex items-center gap-1"
               >
                 Learn More
                 <svg

@@ -48,17 +48,14 @@ const LINE_2 = "heart and expertise";
 export default function WhyChooseUs() {
   const sectionRef = useRef(null);
 
-  // Typewriter
   const [line1, setLine1] = useState("");
   const [line2, setLine2] = useState("");
   const [typingLine, setTypingLine] = useState<1 | 2 | "done">(1);
 
-  // Slide-up refs
   const titleBlockRef = useRef(null);
   const reasonRefs = useRef<(HTMLDivElement | null)[]>([]);
   const highlightRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  // Typewriter fires when section enters view
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -85,7 +82,6 @@ export default function WhyChooseUs() {
     return () => observer.disconnect();
   }, []);
 
-  // Slide-up for title block, reasons, and highlights
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -106,25 +102,25 @@ export default function WhyChooseUs() {
   }, []);
 
   return (
-    <section id="why-choose-us" ref={sectionRef} className="py-24  bg-white">
-      <div className="max-w-[1440px] mx-auto mt-10">
+    <section id="why-choose-us" ref={sectionRef} className="py-24 bg-white">
+      <div className="max-w-[1440px] mx-auto mt-10 px-6">
 
-        <div className="flex gap-12 mb-12">
+        <div className="flex flex-col lg:flex-row gap-12 mb-12">
 
           {/* Left — typewriter heading + slide-up description */}
-          <div className="w-[55%]">
+          <div className="w-full lg:w-[55%]">
             <div className="flex items-center gap-2 mb-5">
               <span className="w-2 h-2 rounded-full bg-[#C97B63]" />
-              <span className="text-lg text-black font-medium font-lora">Why Choose Us</span>
+              <span className="text-lg text-black font-medium font-lora italic">Why Choose Us</span>
             </div>
 
-            <h2 className="font-jakarta font-semibold text-5xl text-[#2C1810] leading-tight mb-2 min-h-28">
+            <h2 className="font-jakarta font-semibold text-4xl lg:text-5xl text-[#2C1810] leading-tight mb-2 min-h-20 lg:min-h-28">
               {line1}
               {typingLine === 1 && <span className="animate-pulse text-[#C97B63]">|</span>}
               {(typingLine === 2 || typingLine === "done") && (
                 <>
                   <br />
-                  <span className="font-lora font-normal">
+                  <span className="font-lora italic font-normal">
                     {line2}
                     {typingLine === 2 && <span className="animate-pulse text-[#C97B63]">|</span>}
                   </span>
@@ -132,20 +128,19 @@ export default function WhyChooseUs() {
               )}
             </h2>
 
-            {/* Description slides up after typing */}
             <div
               ref={titleBlockRef}
               className="translate-y-16 opacity-0 transition-all duration-700 ease-out"
             >
-              <p className="text-sm text-[#9C8070] leading-relaxed w-full">
+              <p className="text-lg text-black font-medium leading-relaxed w-full">
                 Choosing the right care home is more than a decision — it's a commitment
                 to your loved one's safety, comfort, and happiness. We combine medical
-                expertise with heartfelt compassion to create a place they can truly call home.
+                expertise with heartfelt care.
               </p>
             </div>
           </div>
 
-          {/* Right — reasons slide in staggered */}
+          {/* Right — reasons */}
           <div className="flex flex-col justify-center gap-4">
             {reasons.map((r, idx) => (
               <div
@@ -154,9 +149,9 @@ export default function WhyChooseUs() {
                 className="flex items-start gap-3 translate-y-16 opacity-0 transition-all duration-700 ease-out"
                 style={{ transitionDelay: `${idx * 120}ms` }}
               >
-                <span className="w-6 h-6 rounded-full bg-[#F2DDD3] flex items-center justify-center flex-shrink-0 mt-0.5">
+                <span className="w-6 h-6 rounded-full bg-[#E6A493] flex items-center justify-center shrink-0 mt-0.5">
                   <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5">
-                    <path d="M3 8l3.5 3.5L13 5" stroke="#C97B63" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    <path d="M3 8l3.5 3.5L13 5" stroke="#FFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 </span>
                 <span className="text-lg text-[#5C4033]">{r}</span>
@@ -166,7 +161,7 @@ export default function WhyChooseUs() {
         </div>
 
         {/* Image card */}
-        <div className="relative rounded-3xl overflow-hidden w-full border-t-2 border-[#C97B63]/30">
+        <div className="relative rounded-3xl overflow-hidden w-full border-t-2 border-[#C97B63]/30 min-h-[500px] lg:min-h-0">
           <img
             src="/images/why-choose-us-img.jpg"
             alt="Caregiver with senior resident"
@@ -175,10 +170,11 @@ export default function WhyChooseUs() {
 
           <div className="absolute inset-0 bg-[#2E2018]/20" />
 
-          {/* Play button with pulsing rings */}
+          {/* Play button */}
           <button
             aria-label="Play video"
-            className="absolute inset-0 flex items-center -mt-[100px] justify-center group"
+            className="absolute inset-0 flex items-center justify-center group"
+            style={{ paddingBottom: "30%" }}
           >
             <div className="relative flex items-center justify-center">
               <span className="absolute w-24 h-24 rounded-full bg-[#E6A493]/20 animate-ping" />
@@ -191,9 +187,9 @@ export default function WhyChooseUs() {
             </div>
           </button>
 
-          {/* Bottom highlights with top border */}
-          <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-[#2E2018]/80 to-transparent pb-16 px-8">
-            <div className="grid sm:grid-cols-3 gap-6 w-[97%] m-auto border-t-[0.1px] border-[#e8e8e88b] pt-8">
+          {/* Bottom highlights */}
+          <div className="absolute bottom-0 left-0 right-0 bg-linear-to-t from-[#2E2018]/80 to-transparent pb-6 px-4 lg:px-12">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full m-auto border-t-[0.1px] border-[#757575]/40 pt-8">
               {highlights.map((h, idx) => (
                 <div
                   key={h.title}
@@ -201,12 +197,12 @@ export default function WhyChooseUs() {
                   className="flex items-start gap-4 translate-y-16 opacity-0 transition-all duration-700 ease-out"
                   style={{ transitionDelay: `${idx * 150}ms` }}
                 >
-                  <div className="w-12 h-12 rounded-full bg-[#C97B63]/80 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 lg:w-14 lg:h-14 rounded-full bg-[#C97B63]/80 flex items-center justify-center shrink-0">
                     {h.icon}
                   </div>
                   <div>
-                    <h4 className="font-bold text-white text-2xl mb-1">{h.title}</h4>
-                    <p className="text-white text-lg font-semibold leading-relaxed">{h.desc}</p>
+                    <h4 className="font-bold text-white text-base lg:text-2xl mb-1">{h.title}</h4>
+                    <p className="text-white text-sm lg:text-lg font-semibold leading-relaxed">{h.desc}</p>
                   </div>
                 </div>
               ))}

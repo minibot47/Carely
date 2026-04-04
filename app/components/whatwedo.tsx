@@ -73,17 +73,14 @@ const LINE_2 = "for every life stage";
 export default function WhatWeDo() {
   const sectionRef = useRef(null);
 
-  // Typewriter
   const [line1, setLine1] = useState("");
   const [line2, setLine2] = useState("");
   const [typingLine, setTypingLine] = useState<1 | 2 | "done">(1);
 
-  // Slide-up refs
   const bodyRef = useRef(null);
   const ctaRef = useRef(null);
   const serviceRefs = useRef<(HTMLDivElement | null)[]>([]);
 
-  // Typewriter — fires when section scrolls into view
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -110,7 +107,6 @@ export default function WhatWeDo() {
     return () => observer.disconnect();
   }, []);
 
-  // Slide-up for body, cta, and service cards
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -131,26 +127,24 @@ export default function WhatWeDo() {
   }, []);
 
   return (
-    <section ref={sectionRef} id="what-we-do" className="py-24 px-10 bg-white mt-10">
+    <section ref={sectionRef} id="what-we-do" className="py-24 px-6 bg-white mt-10">
       <div className="max-w-[1440px] m-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
 
-          {/* ── Left col ── */}
-          <div className="lg:sticky lg:top-28">
-            {/* Label */}
+          {/* Left col */}
+          <div className="lg:sticky lg:top-28 mb-4 lg:mb-0">
             <div className="flex items-center gap-2 mb-5">
               <span className="w-2 h-2 rounded-full bg-[#C97B63]" />
-              <span className="text-lg text-black font-lora font-medium">What we do</span>
+              <span className="text-lg text-black font-lora italic font-medium">What we do</span>
             </div>
 
-            {/* Typewriter heading */}
-            <h2 className="font-jarkata text-5xl font-semibold text-[#2C1810] leading-tight mb-2 min-h-[8rem]">
+            <h2 className="font-jarkata text-4xl lg:text-5xl font-semibold text-[#2C1810] leading-tight mb-2 min-h-[6rem] lg:min-h-[8rem]">
               {line1}
               {typingLine === 1 && <span className="animate-pulse text-[#C97B63]">|</span>}
               {(typingLine === 2 || typingLine === "done") && (
                 <>
                   {" "}
-                  <span className="font-lora font-thin">
+                  <span className="font-lora italic font-thin">
                     {line2}
                     {typingLine === 2 && <span className="animate-pulse text-[#C97B63]">|</span>}
                   </span>
@@ -158,7 +152,6 @@ export default function WhatWeDo() {
               )}
             </h2>
 
-            {/* Body slides up */}
             <div
               ref={bodyRef}
               className="flex items-start gap-3 mb-10 translate-y-16 opacity-0 transition-all duration-700 ease-out"
@@ -170,7 +163,6 @@ export default function WhatWeDo() {
               </p>
             </div>
 
-            {/* CTA slides up with a slight delay */}
             <div
               ref={ctaRef}
               className="translate-y-16 opacity-0 transition-all duration-700 ease-out delay-150"
@@ -187,8 +179,8 @@ export default function WhatWeDo() {
             </div>
           </div>
 
-          {/* ── Right col — service grid ── */}
-          <div className="grid grid-cols-2 gap-x-8 gap-y-10">
+          {/* Right col — service grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10">
             {services.map((s, idx) => (
               <div
                 key={s.title}
@@ -196,14 +188,11 @@ export default function WhatWeDo() {
                 className="flex gap-4 items-start group translate-y-16 opacity-0 transition-all duration-700 ease-out"
                 style={{ transitionDelay: `${idx * 100}ms` }}
               >
-                {/* Icon circle */}
                 <div className="w-12 h-12 rounded-full bg-[#E8C5B5] flex items-center justify-center flex-shrink-0 group-hover:bg-[#C97B63] transition-colors">
                   <div className="[&_svg]:stroke-[#C97B63] group-hover:[&_svg]:stroke-white transition-colors">
                     {s.icon}
                   </div>
                 </div>
-
-                {/* Text */}
                 <div>
                   <h3 className="font-bold text-[#2C1810] text-xl mb-1.5">{s.title}</h3>
                   <p className="text-normal text-[#9C8070] leading-relaxed">{s.desc}</p>

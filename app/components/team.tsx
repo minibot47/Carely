@@ -108,7 +108,7 @@ export default function Team() {
         <div className="w-full flex flex-col items-center justify-center mb-14">
           <div className="flex items-center justify-center gap-2 mb-4">
               <span className="w-2 h-2 rounded-full bg-[#C97B63]" />
-              <span className="text-lg text-black italic font-medium">Our team member</span>
+              <span className="text-lg text-black font-lora italic font-medium">Our team member</span>
           </div>
           <h2 className="text-center text-5xl mb-5 font-semibold w-full min-h-24">
             {line1}
@@ -116,7 +116,7 @@ export default function Team() {
             {(typingLine === 2 || typingLine === "done") && (
               <>
                 <br />
-                <span className="font-lora italic font-normal">
+                <span className="font-lora italic italic font-normal">
                   {line2}
                   {typingLine === 2 && <span className="animate-pulse text-[#C97B63]">|</span>}
                 </span>
@@ -135,7 +135,7 @@ export default function Team() {
               style={{ transitionDelay: `${idx * 150}ms` }}
             >
               {/* Photo with hover social overlay */}
-              <div className="h-[350px] w-full rounded-2xl mb-4 overflow-hidden relative">
+              <div className="h-[330px] w-full rounded-2xl mb-4 overflow-hidden relative">
                 <img
                   src={member.photo}
                   alt={member.name}

@@ -15,21 +15,21 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="top-0 left-0 right-0 z-50 2xl:px-10  ">
-      <div className="  h-25 flex items-center justify-between px-0 2xl:px-5">
+    <nav className="top-0 left-0 right-0 z-50  ">
+      <div className="  h-25  flex pt-2 items-center justify-between px-0 2xl:px-5 ">
 
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2 flex-shrink-0">
-          <div className=" rounded-full flex items-center justify-center flex-shrink-0">
+        <Link href="/" className="flex items-center gap-3 shrink-0">
+          <div className=" rounded-full flex items-center justify-center shrink-0">
             <img src="/logos/logo.png" alt="Carely logo" className="w-13 h-13 object-contain" />
           </div>
-          <span className="font-jarkata text-4xl font-semibold text-[#2C1810]">
-            Care<span className="italic font-normal">ly</span>.
+          <span className="font-jarkata text-3xl font-semibold text-[#2C1810]">
+            Care<span className="italic font-lora font-normal">ly</span>.
           </span>
         </Link>
 
         {/* Desktop Nav — centered */}
-        <div className="hidden md:flex items-center gap-10 text-[18px] font-semibold text-[#2C1810] ">
+        <div className="hidden md:flex items-center gap-8 text-[16px] font-medium text-[#2C1810]  mt-0.5 -ml-10">
           {navLinks.map((item) => (
             <Link
               key={item.label}
@@ -40,7 +40,7 @@ export default function Navbar() {
             >
               {item.label}
               {item.hasDropdown && (
-                <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5" stroke="currentColor" strokeWidth="2">
+                <svg viewBox="0 0 16 16" fill="none" className="w-6 h-4" stroke="currentColor" strokeWidth="1">
                   <path d="M4 6l4 4 4-4" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               )}
@@ -52,10 +52,10 @@ export default function Navbar() {
         <div className="hidden md:flex items-center">
           <Link
             href="#contact"
-            className="flex items-center gap-2 bg-[#E6A493] hover:bg-[#A85F48] transition-colors text-white text-lg font-semibold px-5 py-3 rounded-[8px]"
+            className="flex items-center gap-2 bg-[#E6A493] hover:bg-[#A85F48] transition-colors text-white text-lg font-semibold px-4 py-2.5 rounded-[8px]"
           >
             Contact Us
-            <svg viewBox="0 0 16 16" fill="none" className="w-3.5 h-3.5" stroke="currentColor" strokeWidth="2">
+            <svg viewBox="0 0 18 16" fill="none" className="w-4 h-4" stroke="currentColor" strokeWidth="2">
               <path d="M3 13L13 3M13 3H7M13 3v6" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
           </Link>

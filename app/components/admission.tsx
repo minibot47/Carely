@@ -169,7 +169,7 @@ export default function Admission() {
         <div className="text-center mb-16">
           <div className="flex items-center justify-center gap-2 mb-4">
             <span className="w-2 h-2 rounded-full bg-[#C97B63]" />
-            <span className="text-lg text-black italic font-medium">How It Work</span>
+            <span className="text-lg text-black font-lora italic font-medium">How It Work</span>
           </div>
           <div className="min-h-32">
             <h2 className="font-jarkata text-5xl font-bold text-[#2C1810] leading-tight">
@@ -177,7 +177,7 @@ export default function Admission() {
               {typingLine === 1 && <span className="animate-pulse text-[#C97B63]">|</span>}
             </h2>
             {(typingLine === 2 || typingLine === "done") && (
-              <h2 className="font-lora text-5xl  text-[#2C1810] leading-tight">
+              <h2 className="font-lora italic text-5xl  text-[#2C1810] leading-tight">
                 {line2}
                 {typingLine === 2 && <span className="animate-pulse text-[#C97B63]">|</span>}
               </h2>
@@ -185,13 +185,13 @@ export default function Admission() {
           </div>
         </div>
 
-        {/* Steps row — images on top, arrows centered between them */}
-        <div className="flex items-center justify-center">
+        {/* Steps row */}
+        <div className="flex flex-col lg:flex-row items-center justify-center">
           {steps.map((step, i) => (
-            <div key={step.title} className="flex items-start">
+            <div key={step.title} className="flex flex-col lg:flex-row items-center">
 
               {/* Step card */}
-              <div className="flex flex-col items-center text-center w-[180px] lg:w-[300px]">
+              <div className="flex flex-col items-center text-center w-[280px] sm:w-[320px] lg:w-[280px]">
                 <ShapedImage
                   shape={step.shape}
                   img={step.img}
@@ -201,40 +201,36 @@ export default function Admission() {
 
                 <div
                   ref={(el) => { textRefs.current[i] = el; }}
-                  className="mt-6 px-2 translate-y-12 opacity-0 transition-all duration-700 ease-out"
+                  className="mt-6 px-4 lg:px-2 translate-y-12 opacity-0 transition-all duration-700 ease-out"
                   style={{ transitionDelay: `${i * 150 + 200}ms` }}
                 >
                   <h3 className="font-bold text-[#2C1810] text-lg mb-3 leading-snug">{step.title}</h3>
-                  <p className="text-lg text-[#9C8070] leading-relaxed">{step.desc}</p>
+                  <p className="text-base lg:text-lg text-[#9C8070] leading-relaxed">{step.desc}</p>
                 </div>
               </div>
 
-              {/* Arrow — centered at image height (w-44 = 176px, so mt = half = ~88px) */}
+              {/* Arrow — horizontal on desktop, vertical on mobile */}
               {i < steps.length - 1 && (
                 <div
                   ref={(el) => { arrowRefs.current[i] = el; }}
-                  className="hidden lg:flex items-center justify-center w-14 shrink-0 translate-y-12 opacity-0 transition-all duration-700 ease-out"
+                  className="flex items-center justify-center shrink-0 translate-y-12 opacity-0 transition-all duration-700 ease-out my-4 lg:my-0"
                   style={{
-                    marginTop: "72px", // vertically centers arrow within the 176px image
+                    marginTop: undefined,
                     transitionDelay: `${i * 150 + 100}ms`,
                   }}
                 >
-                  <svg width="56" height="40" viewBox="0 0 56 40" fill="none">
-                    <path
-                      d="M4 30 Q28 4 52 20"
-                      stroke="#C97B63"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      fill="none"
-                    />
-                    <path
-                      d="M46 14 L52 20 L44 22"
-                      stroke="#C97B63"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      fill="none"
-                    />
+                  {/* Desktop arrow — horizontal curved */}
+                  <svg className="hidden lg:block" width="56" height="40" viewBox="0 0 56 40" fill="none"
+                    style={{ marginTop: "72px" }}
+                  >
+                    <path d="M4 30 Q28 4 52 20" stroke="#C97B63" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                    <path d="M46 14 L52 20 L44 22" stroke="#C97B63" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+                  </svg>
+
+                  {/* Mobile/tablet arrow — pointing down */}
+                  <svg className="block lg:hidden" width="40" height="56" viewBox="0 0 40 56" fill="none">
+                    <path d="M10 4 Q36 28 20 52" stroke="#C97B63" strokeWidth="1.5" strokeLinecap="round" fill="none" />
+                    <path d="M14 46 L20 52 L26 46" stroke="#C97B63" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
                   </svg>
                 </div>
               )}
