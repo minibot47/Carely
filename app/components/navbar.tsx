@@ -21,7 +21,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 shrink-0">
           <div className=" rounded-full flex items-center justify-center shrink-0">
-            <img src="/logos/logo.png" alt="Carely logo" className="w-13 h-13 object-contain" />
+            <img src="/logos/logo.svg" alt="Carely logo" className="w-13 h-13 object-contain" />
           </div>
           <span className="font-jarkata text-3xl font-semibold text-[#2C1810]">
             Care<span className="italic font-lora font-normal">ly</span>.
@@ -29,7 +29,7 @@ export default function Navbar() {
         </Link>
 
         {/* Desktop Nav — centered */}
-        <div className="hidden md:flex items-center gap-8 text-[16px] font-medium text-[#2C1810]  mt-0.5 -ml-10">
+        <div className="hidden lg:flex items-center gap-8 text-[16px] font-medium text-[#2C1810]  mt-0.5 -ml-10">
           {navLinks.map((item) => (
             <Link
               key={item.label}
@@ -64,7 +64,7 @@ export default function Navbar() {
         {/* Mobile burger */}
         <button
           onClick={() => setOpen(!open)}
-          className="md:hidden flex flex-col gap-1.5 p-2"
+          className="lg:hidden flex flex-col gap-1.5 p-2"
           aria-label="Toggle menu"
         >
           <span className={`w-6 h-0.5 bg-[#2C1810] transition-transform duration-200 ${open ? "rotate-45 translate-y-2" : ""}`} />
