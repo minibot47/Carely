@@ -62,11 +62,11 @@ export default function Footer() {
                 <img src="/logos/Logo.png" alt="logo" className="w-7 h-7 object-contain" />
               </div>
               <span className="font-jakarta text-3xl text-white font-semibold">
-                Care<span className="font-light font-lora italic">ly</span>.
+                ElderNest<span className="font-light font-lora italic"> Care</span>.
               </span>
             </div>
-            <p className="text-sm text-white leading-relaxed mb-6 max-w-[200px]">
-              We provide expert care services for crystal-clear, safe and happy senior living.
+            <p className="text-sm text-white leading-relaxed mb-6 w-[80%] px-3">
+              A boutique living experience for seniors in the heart of Yaba, Lagos.
             </p>
             <div className="flex items-center gap-3">
               {[
@@ -124,16 +124,16 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <Phone size={16} color="#C97B63" className="mt-0.5 shrink-0" />
-                <span className="text-sm text-white">+1 (234) 567 489</span>
+                <span className="text-sm text-white">+234 814 771 0837</span>
               </li>
               <li className="flex items-start gap-3">
                 <Mail size={16} color="#C97B63" className="mt-0.5 shrink-0" />
-                <span className="text-sm text-white">info@domainname.com</span>
+                <span className="text-sm text-white">hello@eldernestcare.site</span>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin size={16} color="#C97B63" className="mt-0.5 shrink-0" />
                 <span className="text-sm text-white leading-relaxed">
-                  123 High Street, Springfield,<br />London SW1A 1A, United Kingdom.
+                  Yaba, Lagos, Nigeria
                 </span>
               </li>
             </ul>

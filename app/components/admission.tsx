@@ -7,25 +7,25 @@ const steps = [
     title: "Schedule a Free Consultation",
     desc: "Speak with our care coordinator to discuss your loved one's health, lifestyle, and support needs",
     shape: "flower",
-    img: "/images/how-work-img-1.jpg",
+    img: "/images/fact-image-1.jpg",
   },
   {
     title: "Personalized Care",
     desc: "We conduct a comprehensive health and wellness evaluation to create a custom care plan tailored",
     shape: "asterisk",
-    img: "/images/how-work-img-2.jpg",
+    img: "/images/fact-image-4.jpg",
   },
   {
     title: "Choose Your Care Option",
     desc: "Select the best fit from our care programs — Assisted Living, Skilled Nursing, Memory Care, or Respite",
     shape: "plus",
-    img: "/images/how-work-img-3.jpg",
+    img: "/images/fact-image-2.jpg",
   },
   {
     title: "Move-In & Welcome Day",
     desc: "Once moved in, care begins immediately. We keep you regularly informed, monitor progress,",
     shape: "flower",
-    img: "/images/how-work-img-4.jpg",
+    img: "/images/fact-image-3.jpg",
   },
 ];
 

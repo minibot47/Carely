@@ -21,10 +21,10 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 shrink-0">
           <div className=" rounded-full flex items-center justify-center shrink-0">
-            <img src="/logos/logo.svg" alt="Carely logo" className="w-12 h-12 object-contain" />
+            <img src="/logos/logo.png" alt="Carely logo" className="w-12 h-12 object-contain" />
           </div>
           <span className="font-jarkata text-3xl font-semibold text-[#2C1810]">
-            Care<span className="italic font-lora font-normal">ly</span>.
+            ElderNest<span className="italic font-lora font-normal">Care</span>.
           </span>
         </Link>
 
@@ -54,7 +54,7 @@ export default function Navbar() {
             href="#contact"
             className="flex items-center gap-2 bg-[#E6A493] hover:bg-[#A85F48] transition-colors text-white text-lg font-semibold px-4 py-2.5 rounded-[8px]"
           >
-            Contact Us
+            Book a Visit
             <svg viewBox="0 0 18 16" fill="none" className="w-4 h-4" stroke="currentColor" strokeWidth="2">
               <path d="M3 13L13 3M13 3H7M13 3v6" strokeLinecap="round" strokeLinejoin="round" />
             </svg>

@@ -47,7 +47,7 @@ export default function Hero() {
         style={{ top: "-10%", height: "120%" }}
       >
         <img
-          src="/images/hero-img.jpg"
+          src="/images/post-3.jpg"
           alt="Senior care"
           className="object-cover object-top h-full w-full scale-100"
         />
@@ -55,7 +55,7 @@ export default function Hero() {
       </div>
 
       {/* Bottom fade blur */}
-      <div className="absolute bottom-0 left-0 right-0 h-62 bg-linear-to-t from-[#E6A493]/75 to-transparent backdrop-blur-[2px] [mask-image:linear-gradient(to_top,black_60%,transparent)]" />
+      <div className="absolute bottom-0 left-0 right-0 h-62 bg-linear-to-t from-black/75 to-transparent backdrop-blur-[2px] [mask-image:linear-gradient(to_top,black_60%,transparent)]" />
 
       {/* Content */}
       <div className="relative z-10 w-full flex items-center h-full justify-between">
@@ -76,10 +76,8 @@ export default function Hero() {
               done ? "opacity-100" : "opacity-0"
             }`}
           >
-            At [Your Facility Name], we provide more than just care — we offer a
-            second home built on trust, warmth, and respect. With round-the-clock
-            nursing support, personalized care plans, and a deeply compassionate
-            team,
+            At ElderNest Care, we blend hospitality with healthcare to create a place that feels like home — 
+            while delivering professional, personal support every day.
           </p>
 
           {/* Trust badges */}

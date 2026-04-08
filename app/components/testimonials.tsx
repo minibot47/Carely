@@ -3,33 +3,33 @@ import { useState, useEffect, useRef } from "react";
 
 const testimonials = [
   {
-    quote: "After my father had a fall at home, we knew he needed more help than we could give. We were worried about the transition, but the team at [Facility Name] made it so smooth. From the first day.",
-    name: "Jenny Wilson",
+    quote: "We were nervous about placing Papa in a care facility, but ElderNest changed everything. The staff treated him like their own — with so much warmth and patience. We sleep better at night knowing he is in Yaba, safe and happy.",
+    name: "Adaeze Okonkwo",
     avatar: "/images/satisfy-client-img-1.jpg",
   },
   {
-    quote: "When I moved in, I thought I was giving up my independence. But what I found was a new chapter. I've joined the painting club, made friends over tea, and even started doing yoga again.",
-    name: "Sophia Reynolds",
+    quote: "I didn't want to leave my house, but my children convinced me to try ElderNest. Now I don't want to leave ElderNest! The food is delicious, the people are kind, and I feel more alive than I have in years.",
+    name: "Pa Emmanuel Fashola",
     avatar: "/images/satisfy-client-img-2.jpg",
   },
   {
-    quote: "The care here is unlike anything I expected. Every staff member knows my name, my story, and what makes me smile. I feel seen every single day.",
-    name: "Robert James",
+    quote: "The level of professionalism here is unlike anything I've seen in Lagos. They sent us weekly updates on my mother's health, called us during her birthday, and always made us feel like partners in her care.",
+    name: "Tunde Balogun",
     avatar: "/images/satisfy-client-img-3.jpg",
   },
   {
-    quote: "Moving my mom here was one of the hardest decisions I've ever made. But seeing her laugh and thrive every time I visit makes me know it was the right one.",
-    name: "Michael Carter",
+    quote: "My aunt has dementia and we were struggling to cope. ElderNest's team was not just skilled — they were gentle, understanding, and incredibly patient with her. It has been a true blessing for our family.",
+    name: "Blessing Eze",
     avatar: "/images/satisfy-client-img-4.jpg",
   },
   {
-    quote: "The activities, the food, the kindness — everything here feels intentional. My husband has never been happier, and that gives our whole family peace of mind.",
-    name: "Linda Forsythe",
+    quote: "As someone who has lived in Lagos all my life, I didn't expect to find this level of care in Ikorodu. The environment is calm, the food is good, and the nurses genuinely care. I feel at home here.",
+    name: "Alhaja Ramota Suleiman",
     avatar: "/images/satisfy-client-img-1.jpg",
   },
   {
-    quote: "I was skeptical at first, but the staff proved me wrong within the first week. They genuinely care, and it shows in every little interaction.",
-    name: "Patricia Moore",
+    quote: "My siblings and I were skeptical at first — we didn't want Mama to feel abandoned. But Royal Medicare made her feel celebrated. They remembered her birthday and everything. We are so grateful.",
+    name: "Ngozi Eze-Williams",
     avatar: "/images/satisfy-client-img-2.jpg",
   },
 ];
@@ -235,7 +235,7 @@ export default function Testimonials() {
           {/* STATS */}
           <div className="relative rounded-2xl overflow-hidden min-h-[320px] lg:min-h-0">
             <div className="absolute inset-0">
-              <img src="/images/testimonial-img.jpg" className="object-cover w-full h-full" alt="testimonial" />
+              <img src="/images/testimonial-bg.jpg" className="object-cover w-full h-full" alt="testimonial" />
             </div>
             <div className="absolute inset-0 bg-black/50" />
             <div className="relative z-10 p-8 space-y-6">
@@ -254,7 +254,7 @@ export default function Testimonials() {
         </div>
 
         {/* BOTTOM TEXT */}
-        <p className="text-center text-white font-bold text-base lg:text-xl mt-10 lg:mt-14 mb-8 lg:mb-10">
+        <p className="text-center text-white font-jakarta font-bold text-base lg:text-xl mt-10 lg:mt-14 mb-8 lg:mb-10">
           Real Stories From Residents and Their
           <br />Families
         </p>
@@ -267,7 +267,7 @@ export default function Testimonials() {
           }}
         >
           {/* Mobile — 3 logos */}
-          <div className="grid grid-cols-3 gap-6 sm:hidden">
+          {/* <div className="grid grid-cols-3 gap-6 sm:hidden">
             {[...Array(3)].map((_, i) => {
               const logo = logos[(logoPage + i) % logos.length];
               return (
@@ -276,10 +276,10 @@ export default function Testimonials() {
                 </div>
               );
             })}
-          </div>
+          </div> */}
 
           {/* Tablet — 4 logos */}
-          <div className="hidden sm:flex lg:hidden justify-center gap-8">
+          {/* <div className="hidden sm:flex lg:hidden justify-center gap-8">
             {[...Array(4)].map((_, i) => {
               const logo = logos[(logoPage + i) % logos.length];
               return (
@@ -288,10 +288,10 @@ export default function Testimonials() {
                 </div>
               );
             })}
-          </div>
+          </div> */}
 
           {/* Desktop — all 6 logos */}
-          <div className="hidden lg:flex gap-10 justify-center">
+          {/* <div className="hidden lg:flex gap-10 justify-center">
             {[...Array(6)].map((_, i) => {
               const logo = logos[(logoPage + i) % logos.length];
               return (
@@ -301,7 +301,7 @@ export default function Testimonials() {
                 </div>
               );
             })}
-          </div>
+          </div> */}
         </div>
 
       </div>

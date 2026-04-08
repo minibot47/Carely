@@ -201,7 +201,7 @@ useEffect(() => {
                   transition: "clip-path 1s ease",
                 }}
               >
-                <img src="/images/funfact2.jpg" alt="Nurse with resident" className="object-fill w-full" />
+                <img src="/images/fact-image-1.jpg" alt="Nurse with resident" className="object-fill w-full" />
               </div>
             </div>
           </div>
@@ -217,7 +217,7 @@ useEffect(() => {
                   transition: "clip-path 1s ease 0.2s",
                 }}
               >
-                <img src="/images/funfact1.jpg" alt="Nurse with resident" className="object-cover w-full" />
+                <img src="/images/feature-image-2.jpg" alt="Nurse with resident" className="object-cover w-full" />
               </div>
             </div>
 

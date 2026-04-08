@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
-const HEADING = "Backed by experience, guided by empathy — we provide expert care that prioritizes senior wellness, independence,";
-const HEADING_SUFFIX = " and family peace of mind.";
+const HEADING = "At ElderNest Care, we believe aging should be a vibrant, dignified experience. Located in Yaba, Lagos, our boutique facility blends warm hospitality with professional healthcare";
+const HEADING_SUFFIX = " so every resident truly feels at home.";
 
 export default function About() {
   const [displayed, setDisplayed] = useState("");
@@ -76,7 +76,7 @@ export default function About() {
           <span className="text-lg text-black font-lora italic font-medium">About us</span>
         </div>
 
-                {/* Heading — clean typewriter, no ghost */}
+        {/* Heading — clean typewriter, no ghost */}
         <h1 className="font-semibold font-jakarta text-center text-3xl sm:text-5xl leading-tight w-full">
           <span className="text-[#2C1810]">
             {displayed}
@@ -113,7 +113,7 @@ export default function About() {
             translate-y-16 opacity-0 transition-all duration-700 ease-out"
         >
           <div className="w-40 h-40 sm:w-44 sm:h-44 mb-4 shrink-0 relative" style={{ clipPath: "url(#flower)" }}>
-            <img src="/images/about-img-2.jpg" alt="Nursing" className="object-cover w-full h-full" />
+            <img src="/images/about-us-image-1.jpg" alt="Nursing" className="object-cover w-full h-full" />
           </div>
           <h2 className="text-xl font-bold text-[#2C1810] text-center">24/7 Skilled Nursing Support</h2>
           <p className="text-sm text-black text-center leading-relaxed">
@@ -128,7 +128,7 @@ export default function About() {
             translate-y-16 opacity-0 transition-all duration-700 ease-out delay-150"
         >
           <div className="w-40 h-40 sm:w-44 sm:h-44 mb-4 shrink-0" style={{ clipPath: "url(#asterisk)" }}>
-            <img src="/images/about-img-1.jpg" alt="Nursing" className="object-cover w-full h-full" />
+            <img src="/images/about-us-image-2.jpg" alt="Nursing" className="object-cover w-full h-full" />
           </div>
           <h2 className="text-xl font-bold text-[#2C1810] text-center">Personalized Care Plans</h2>
           <p className="text-sm text-black text-center leading-relaxed">
@@ -143,7 +143,7 @@ export default function About() {
             translate-y-16 opacity-0 transition-all duration-700 ease-out delay-300"
         >
           <div className="w-40 h-40 sm:w-44 sm:h-44 mb-4 shrink-0" style={{ clipPath: "url(#blob)" }}>
-            <img src="/images/about-img-3.jpg" alt="Nursing" className="object-cover w-full h-full" />
+            <img src="/images/post-2.jpg" alt="Nursing" className="object-cover w-full h-full" />
           </div>
           <h2 className="text-xl font-bold text-[#2C1810] text-center">Safe, Homelike Environment</h2>
           <p className="text-sm text-black text-center leading-relaxed">

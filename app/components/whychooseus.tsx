@@ -163,9 +163,9 @@ export default function WhyChooseUs() {
         {/* Image card */}
         <div className="relative rounded-3xl overflow-hidden w-full border-t-2 border-[#C97B63]/30 min-h-[500px] lg:min-h-0">
           <img
-            src="/images/why-choose-us-img.jpg"
+            src="/images/how-it-work-bg.jpg"
             alt="Caregiver with senior resident"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover max-h-[80vh]"
           />
 
           <div className="absolute inset-0 bg-[#2E2018]/20" />
@@ -174,7 +174,7 @@ export default function WhyChooseUs() {
           <button
             aria-label="Play video"
             className="absolute inset-0 flex items-center justify-center group"
-            style={{ paddingBottom: "30%" }}
+            style={{ paddingBottom: "10%" }}
           >
             <div className="relative flex items-center justify-center">
               <span className="absolute w-24 h-24 rounded-full bg-[#E6A493]/20 animate-ping" />
@@ -201,8 +201,8 @@ export default function WhyChooseUs() {
                     {h.icon}
                   </div>
                   <div>
-                    <h4 className="font-bold text-white text-base lg:text-2xl mb-1">{h.title}</h4>
-                    <p className="text-white text-sm lg:text-lg font-semibold leading-relaxed">{h.desc}</p>
+                    <h4 className="font-semibold font-jakarta text-white text-base lg:text-2xl mb-1">{h.title}</h4>
+                    <p className="text-white text-sm lg:text-sm font-semibold leading-relaxed">{h.desc}</p>
                   </div>
                 </div>
               ))}

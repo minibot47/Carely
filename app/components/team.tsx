@@ -3,10 +3,10 @@
 import { useEffect, useRef, useState } from "react";
 
 const team = [
-  { name: "Brooklyn Simmons", role: "Senior Nursing", photo: "/images/team-1.jpg" },
-  { name: "Cameron Williamson", role: "Resident Counselor", photo: "/images/team-2.jpg" },
-  { name: "Leslie Alexander", role: "Health Coordinator", photo: "/images/team-3.jpg" },
-  { name: "Darlene Robertson", role: "Senior Nursing", photo: "/images/team-4.jpg" },
+  { name: "Ngozi Eze-Williams", role: "Senior Nursing", photo: "/images/team-1.jpg" },
+  { name: "Funmi Adeyemi", role: "Resident Counselor", photo: "/images/team-2.jpg" },
+  { name: "Adaeze Okonkwo", role: "Health Coordinator", photo: "/images/team-3.jpg" },
+  { name: "Emmanuella Fashola", role: "Senior Nursing", photo: "/images/team-4.jpg" },
 ];
 
 const LINE_1 = "Meet the compassionate hearts";
@@ -139,7 +139,7 @@ export default function Team() {
                 <img
                   src={member.photo}
                   alt={member.name}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
                 />
 
                 {/* Dark overlay on hover */}
