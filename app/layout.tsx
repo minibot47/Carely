@@ -20,9 +20,9 @@ export const metadata: Metadata = {
   title: "Eldernest Care — Senior Care & Elderly",
   description: "...",
   icons: {
-    icon: "/logos/logo.jpg",
-    shortcut: "/logos/logo.jpg",
-    apple: "/logos/logo.jpg",
+    icon: "/logos/logo.png",
+    shortcut: "/logos/logo.png",
+    apple: "/logos/logo.png",
   },
   openGraph:{
     title:"Eldernest Care",
