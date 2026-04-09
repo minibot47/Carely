@@ -20,10 +20,23 @@ export const metadata: Metadata = {
   title: "Eldernest Care — Senior Care & Elderly",
   description: "...",
   icons: {
-    icon: "/logos/logo.png",
-    shortcut: "/logos/logo.png",
-    apple: "/logos/logo.png",
+    icon: "/logos/logo.jpg",
+    shortcut: "/logos/logo.jpg",
+    apple: "/logos/logo.jpg",
   },
+  openGraph:{
+    title:"Eldernest Care",
+    description:"ElderNest Care offers a curated, home-like experience for seniors in Yaba, Lagos. From chef-inspired meals to on-call health professionals, we blend hospitality with expert care.",
+    url:"https://eldernestcare.site",
+    siteName:"Eldernest Care",
+    images:[
+      {
+        url:"/logos/meta.jpg",
+        width: 1200,
+        height: 630,
+      }
+    ]
+  }
 };
 
 export default function RootLayout({
