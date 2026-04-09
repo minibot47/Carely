@@ -76,7 +76,7 @@ export default function Hero() {
               done ? "opacity-100" : "opacity-0"
             }`}
           >
-            At ElderNest Care, we blend hospitality with healthcare to create a place that feels like home — 
+            At ElderNest Care, we blend hospitality with healthcare to create a place that feels like home, 
             while delivering professional, personal support every day.
           </p>
 
