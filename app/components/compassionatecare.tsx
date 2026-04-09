@@ -137,7 +137,7 @@ export default function CompassionateCare() {
               }`}
               style={{ transitionDelay: `${idx * 150}ms` }}
             >
-              <p className={`text-lg font-semibold mb-6 ${plan.highlight ? "text-[#E8C5B5]" : "text-[#C97B63]"}`}>
+              <p className={`text-xl font-jakarta font-semibold mb-6 ${plan.highlight ? "text-[#E8C5B5]" : "text-[#C97B63]"}`}>
                 {plan.name}
               </p>
               <p className={`text-sm mb-6 leading-relaxed ${plan.highlight ? "text-back" : "text-[#9C8070]"}`}>
@@ -150,7 +150,7 @@ export default function CompassionateCare() {
               </div>
 
               <div className="flex items-end gap-1 mb-3">
-                <span className="font-jarkata text-5xl">{plan.price}</span>
+                <span className="font-jarkata text-4xl">{plan.price}</span>
                 <span className={`text-sm pb-2 px-1 py-3 rounded-[16px] flex items-center justify-center ${plan.highlight ? "text-[#B09080]" : "text-[#9C8070]"}`}>
                   {plan.unit}
                 </span>

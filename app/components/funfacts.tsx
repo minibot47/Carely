@@ -193,7 +193,7 @@ useEffect(() => {
             </div>
 
             {/* Bottom photo — wipe in from left */}
-            <div className="rounded-2xl overflow-hidden bg-linear-to-br from-[#6B4C3B] to-[#2E1A10]">
+            <div className="rounded-2xl overflow-hidden ">
               <div
                 ref={img2Ref}
                 style={{
@@ -209,7 +209,7 @@ useEffect(() => {
           {/* ── Right column ── */}
           <div className="flex flex-col gap-8">
             {/* Top photo — wipe in from left */}
-            <div className="rounded-2xl overflow-hidden bg-linear-to-br from-[#8B6355] to-[#4A3020]">
+            <div className="rounded-2xl overflow-hidden">
               <div
                 ref={img1Ref}
                 style={{

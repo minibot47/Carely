@@ -46,7 +46,7 @@ export default function Footer() {
             </svg>
             <div className="absolute inset-0 flex items-center justify-center">
               <div className="w-10 h-10 rounded-full bg-[#E6A493] flex items-center justify-center">
-                <img src='/logos/logo.svg' />
+                <img src="/logos/logo.jpg" alt="LOGO" className="rounded-full" />
               </div>
             </div>
           </div>
@@ -128,7 +128,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <Mail size={16} color="#C97B63" className="mt-0.5 shrink-0" />
-                <span className="text-sm text-white">hello@eldernestcare.site</span>
+                <span className="text-sm text-white">hello@eldernestcare.xyz</span>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin size={16} color="#C97B63" className="mt-0.5 shrink-0" />

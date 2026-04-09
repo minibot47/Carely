@@ -23,7 +23,7 @@ export default function Navbar() {
           <div className=" rounded-full flex items-center justify-center shrink-0 ">
             <img src="/logos/logo.jpg" alt="Carely logo" className="w-13 h-13 object-contain" />
           </div>
-          <span className="font-jarkata text-3xl font-semibold text-[#2C1810]">
+          <span className="font-jarkata text-3xl font-medium text-[#2C1810]">
             ElderNest<span className="italic font-lora font-normal"> Care</span>.
           </span>
         </Link>

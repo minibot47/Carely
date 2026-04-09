@@ -97,7 +97,7 @@ function ShapedImage({
         className="w-full h-full translate-y-12 opacity-0 transition-all duration-700 ease-out"
         style={{ clipPath: `url(#${clipId})` }}
       >
-        <img src={img} alt={label} className="w-full h-full object-cover" />
+        <img src={img} alt={label} className="w-full h-full object-cover object-top" />
       </div>
     </div>
   );

@@ -152,7 +152,7 @@ export default function Hero() {
           </svg>
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="w-20 h-20 rounded-full bg-[#f3c4c4] text-white flex items-center justify-center">
-              <img src="/logos/logo.svg" alt="LOGO" />
+              <img src="/logos/logo.jpg" alt="LOGO" className="rounded-full" />
             </div>
           </div>
         </div>
