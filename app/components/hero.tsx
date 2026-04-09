@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
-const TYPED_TEXT = "respect, and experience";
+const TYPED_TEXT = "right here in Yaba, Lagos";
 
 export default function Hero() {
   const bgRef = useRef<HTMLDivElement>(null);
@@ -63,7 +63,7 @@ export default function Hero() {
 
           {/* Typewriter heading */}
           <h1 className="font-jakarta font-bold text-3xl md:text-5xl lg:text-6xl text-white leading-tight mb-6 md:mb-10">
-            Trusted elderly care designed with heart,{" "}
+          Boutique senior living, crafted with heart,{" "}
             <span className="font-lora italic font-medium text-4xl md:text-6xl">
               {displayed}
               {!done && <span className="animate-pulse text-[#f3c4c4]">|</span>}

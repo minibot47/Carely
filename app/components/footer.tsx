@@ -59,7 +59,7 @@ export default function Footer() {
           <div>
             <div className="flex items-center gap-2 mb-4">
               <div className="w-12 h-12 rounded-full bg-[#C97B63]/30 flex items-center justify-center shrink-0">
-                <img src="/logos/Logo.png" alt="logo" className="w-7 h-7 object-contain" />
+                <img src="/logos/logo.jpg" alt="logo" className="w-full h-full rounded-full object-contain" />
               </div>
               <span className="font-jakarta text-3xl text-white font-semibold">
                 ElderNest<span className="font-light font-lora italic"> Care</span>.

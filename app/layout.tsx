@@ -17,12 +17,12 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Carely — Senior Care & Elderly",
+  title: "Eldernest Care — Senior Care & Elderly",
   description: "...",
   icons: {
-    icon: "/logos/Logo.png",
-    shortcut: "/logos/Logo.png",
-    apple: "/logos/Logo.png",
+    icon: "/logos/logo.png",
+    shortcut: "/logos/logo.png",
+    apple: "/logos/logo.png",
   },
 };
 
