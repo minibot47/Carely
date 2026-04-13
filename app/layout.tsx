@@ -7,7 +7,7 @@ const lora = Lora({
   subsets: ["latin"],
   variable: "--font-lora",
   display: "swap",
-  style: ["normal", "italic"], // 👈 this loads the real italic font file
+  style: ["normal", "italic"], 
 });
 
 const jakarta = Plus_Jakarta_Sans({
@@ -17,6 +17,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://eldernest-care.vercel.app/"),
   title: "Eldernest Care — Senior Care & Elderly",
   description: "...",
   icons: {
