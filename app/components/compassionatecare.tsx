@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 const plans = [
   {
     name: "Basic Care",
-    price: "₦29,000",
+    price: "₦",
     unit: "Monthly",
     desc: "We believe great design is more than just visuals — it's a feeling.",
     features: [" Daily Wellness Check", " Group Enrichment Activities", " Home-Style Meals"],
@@ -13,7 +13,7 @@ const plans = [
   },
   {
     name: "Standard Care",
-    price: "₦49,000",
+    price: "₦",
     unit: "Monthly",
     desc: "We believe great design is more than just visuals — it's a feeling.",
     features: [" Everything in Basic", " Personalized Care Plan", " On-Call Health Professional"],
@@ -21,7 +21,7 @@ const plans = [
   },
   {
     name: "Premium Care",
-    price: "₦99,000",
+    price: "₦",
     unit: "Monthly",
     desc: "We believe great design is more than just visuals — it's a feeling.",
     features: [" Everything in Standard", " Dedicated Personal Caregiver", " Priority Medical Access"],
